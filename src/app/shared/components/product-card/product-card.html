@@ -1,0 +1,15 @@
+<div class="product-card-container">
+  <div class="top-product-card">
+      <span class="name">{{producto.nombre}}</span>
+      <span class="price">S/ {{producto.precio.toFixed(2)}}</span>
+  </div>
+  <div class="middle-product-card">
+      <img [src]="producto.imageUrl" alt="Producto" (error)="cargarImagenDefault()"/>
+  </div>
+  <div class="bottom-product-card">
+    <span class="description">
+      {{producto.descripcion}}
+    </span>
+    <span class="category"> {{producto.nombreCategoriaProducto | uppercase}} </span>
+  </div>
+</div>

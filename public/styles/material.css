@@ -1,0 +1,8 @@
+
+button.primary {
+	  --mat-button-text-label-text-color: var(--primary-color); /* aplica a los botones de clase primary */
+	}
+
+button.accent {
+	  --mat-button-text-label-text-color: var(--accent-color); /* aplica a los botones de clase accent */
+	}

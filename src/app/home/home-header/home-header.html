@@ -1,0 +1,17 @@
+<header>
+  <div class="home-header-container">
+    <div class="logo-container">
+      <figure>
+        <img src="images/logo_producto.png" alt="logo" />
+      </figure>
+      <h1>VENTA DE PRODUCTOS</h1>
+    </div>
+    <div class="search-container">
+      <input type="text" class="search_product" placeholder="Buscar..." (input)="buscarProducto($event)" />
+    </div>
+    <div class="buttons-container">
+      <button class="primary" matButton routerLink="/login">INGRESAR</button>
+      <button class="accent" matButton routerLink="/register">REGÍSTRATE</button>
+    </div>
+  </div>
+</header>
