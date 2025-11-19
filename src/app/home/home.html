@@ -1,5 +1,38 @@
+<<<<<<< HEAD
 <app-home-header (searchProductValueChange) = "obtenerProducto($event)"></app-home-header>
 <br /><br />
 <app-product-card [producto]="productoTest"></app-product-card>
 <br /><br />
+=======
+<app-home-header (searchProductValueChange)="obtenerProducto($event)"></app-home-header>
+<div class="home-container">
+  <div class="category-filter-container">
+    <mat-form-field>
+      <mat-label>Categoría Producto</mat-label>
+      <mat-select>
+        <mat-option value="0">Todos</mat-option>
+        <mat-option value="1">Laptops</mat-option>
+        <mat-option value="2">Celulares</mat-option>
+        <mat-option value="3">Monitores / TV</mat-option>
+        <mat-option value="4">Teclados</mat-option>
+        <mat-option value="5">Accesorios Electrónicos</mat-option>
+        <mat-option value="6">Otros</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span class="product-category">Selecciona tu categoría de producto</span>
+  </div>
+  <div class="product-list-container">
+    <app-product-card [producto]="productoTest"></app-product-card>
+    <app-product-card [producto]="productoTest"></app-product-card>
+    <app-product-card [producto]="productoTest"></app-product-card>
+    <app-product-card [producto]="productoTest"></app-product-card>
+    <app-product-card [producto]="productoTest"></app-product-card>
+    <app-product-card [producto]="productoTest"></app-product-card>
+    <app-product-card [producto]="productoTest"></app-product-card>
+    <app-product-card [producto]="productoTest"></app-product-card>
+    <app-product-card [producto]="productoTest"></app-product-card>
+    <app-product-card [producto]="productoTest"></app-product-card>
+  </div>
+</div>
+>>>>>>> e65150a (Maquetación e implementación del componente home-header, footer y product-card)
 <app-footer></app-footer>
