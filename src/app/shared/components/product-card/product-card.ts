@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Producto } from '../../models/product.model';
 import { UpperCasePipe } from '@angular/common';
+import { Producto } from '../../models/producto.model';
 
 @Component({
   selector: 'app-product-card',
@@ -10,10 +10,10 @@ import { UpperCasePipe } from '@angular/common';
 })
 export class ProductCard {
 
-@Input({ required: true }) producto!: Producto; //se enviará un objeto de tipo Producto desde el componenten PADRE
+@Input({ required: true }) dataProducto!: Producto; //se enviará un objeto de tipo Producto desde el componenten PADRE
 
 cargarImagenDefault() {
-  this.producto.imageUrl = 'images/producto_default.jpg';
+  this.dataProducto.imageUrl = 'images/producto_default.jpg';
 }
 
 }

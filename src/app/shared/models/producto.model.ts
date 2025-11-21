@@ -11,7 +11,14 @@ export interface Producto{
 }
 
 export interface ProductoResponseById{
-  data: Producto;
+  data: Producto | null;
+  sucess: boolean;
+  message: string | null;
+  errorMessage: string | null;
+}
+
+export interface ProductoResponseByNombre{
+  data: Producto[] | null;
   sucess: boolean;
   message: string | null;
   errorMessage: string | null;
