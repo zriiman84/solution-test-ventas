@@ -85,8 +85,10 @@ export class Home {
   obtenerProductosPorNombre(nombre: string){
     this.productService.getProductByNombre(nombre).subscribe((response) => {
       if(!response.sucess && response.errorMessage){
-        console.error('Error al obtener productos por nombre: "' + nombre + '"', response.errorMessage);
+        console.error('Error al obtener productos por nombre [' + nombre + '] - Error: ', response.errorMessage);
+        return;
       }
+      console.log('Resultado de búsqueda por nombre [' + nombre + ']: ', response.message);
       this.productosFiltrados = response.data ?? [];
     });
   }

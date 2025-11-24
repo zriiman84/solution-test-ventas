@@ -12,7 +12,7 @@ export class HomeService {
   private http = inject(HttpClient);
 
   getHomeData(): Observable<ApiHomeResponse> {
-    return this.http.get<ApiHomeResponse>(this.UrlBase + 'Home'); //retorno un observable de tipo ApiHomeResponse para obtener la lista de categorías y productos
+    return this.http.get<ApiHomeResponse>(this.UrlBase + 'Home'); //retorno un observable con un ApiHomeResponse para obtener la lista de categorías y productos
   }
 
 }
