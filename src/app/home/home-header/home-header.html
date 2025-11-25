@@ -7,11 +7,27 @@
       <h1>VENTA DE PRODUCTOS</h1>
     </div>
     <div class="search-container">
-      <input type="text" class="search_product" placeholder="Buscar..." (input)="buscarProducto($event)" />
+      <input
+        type="text"
+        class="search_product"
+        placeholder="Buscar..."
+        (input)="buscarProducto($event)"
+      />
     </div>
     <div class="buttons-container">
+      @if(userService.getIsLoggedIn()){
+      <button
+        class="primary"
+        matButton
+        [routerLink]="userService.getRole() === 'Administrator' ? '/admin' : '/customer'"
+      >
+        MENU
+      </button>
+      <button class="accent" matButton (click)="logout()">CERRAR SESIÓN</button>
+      } @else{
       <button class="primary" matButton routerLink="/login">INGRESAR</button>
       <button class="accent" matButton routerLink="/register">REGÍSTRATE</button>
+      }
     </div>
   </div>
 </header>

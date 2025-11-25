@@ -10,14 +10,14 @@ export interface Producto{
   status: string;
 }
 
-export interface ProductoResponseById{
+export interface ApiProductoResponseById{
   data: Producto | null;
   sucess: boolean;
   message: string | null;
   errorMessage: string | null;
 }
 
-export interface ProductoResponseByNombre{
+export interface ApiProductoResponseByNombre{
   data: Producto[] | null;
   sucess: boolean;
   message: string | null;

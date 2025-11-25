@@ -3,6 +3,9 @@ import { HelloWorld } from './hello-world/hello-world';
 import { Home } from './home/home';
 import { Login } from './login/login';
 import { Register } from './register/register';
+import { ForgotPassword } from './forgot-password/forgot-password';
+import { Admin } from './admin/admin';
+import { Customer } from './customer/customer';
 
 export const routes: Routes = [
   {
@@ -17,4 +20,16 @@ export const routes: Routes = [
     path: 'register',
     component: Register,
   },
+  {
+    path: 'forgot-password',
+    component: ForgotPassword,
+  },
+  {
+    path: 'admin',
+    component: Admin,
+  },
+  {
+    path: 'customer',
+    component: Customer,
+  }
 ];

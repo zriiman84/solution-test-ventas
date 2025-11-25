@@ -1,1 +1,53 @@
-<p>login works!</p>
+<div class="login-page-container">
+  <app-simple-header></app-simple-header>
+  <div class="principal-container">
+    <div class="title-container">
+      <div class="title">
+        <span>Ingresa a Solution Test Ventas para comprar productos</span>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="card">
+        <div class="title-card">
+          <span>INICIO DE SESIÓN</span>
+        </div>
+        <form [formGroup]="loginForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="usuario"/>
+            @if(loginForm.controls['usuario'].hasError("requerid")){
+              <mat-error>El campo email es obligatorio </mat-error>
+            }
+            @if(loginForm.controls['usuario'].hasError("email")){
+              <mat-error>Ingrese un email válido </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput formControlName="password"/>
+            @if(loginForm.controls['password'].hasError("requerid")){
+              <mat-error>El campo password es obligatorio </mat-error>
+            }
+            @if(loginForm.controls['password'].hasError("minlength")){
+              <mat-error>El password debe tener al menos 8 caracteres </mat-error>
+            }
+             @if(loginForm.controls['password'].hasError("pattern")){
+              <mat-error>El password debe tener al menos un dígito numérico</mat-error>
+            }
+          </mat-form-field>
+          <div class="forgot-password">
+            <span routerLink="/forgot-password">¿Olvidaste tu contraseña?</span>
+          </div>
+          <button mat-flat-button type="button" class="primary" (click)="login()" [disabled]="loginForm.invalid">INGRESAR</button>
+        </form>
+        <div class="register-card">
+          <span
+            >¿No tienes una cuenta?
+            <span class="link" routerLink="/register">Regístrate</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ProductoResponseById, ProductoResponseByNombre } from '../../models/producto.model';
+import { ApiProductoResponseById, ApiProductoResponseByNombre } from '../../models/producto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class ProductService {
   private http = inject(HttpClient);
 
   getProductById(id : number){
-    return this.http.get<ProductoResponseById>(this.UrlBase + 'productos/' + id.toString());
+    return this.http.get<ApiProductoResponseById>(this.UrlBase + 'productos/' + id.toString());
   }
 
   getProductByNombre(nombre : string){
@@ -26,7 +26,7 @@ export class ProductService {
     paramList = paramList.append('Page', '1');
     paramList = paramList.append('PageSize', '10');
 
-    return this.http.get<ProductoResponseByNombre>(this.UrlBase + 'productos', { params: paramList });
+    return this.http.get<ApiProductoResponseByNombre>(this.UrlBase + 'productos', { params: paramList });
 }
 
 }

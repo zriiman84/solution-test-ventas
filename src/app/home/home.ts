@@ -48,9 +48,9 @@ export class Home {
   }
 
   cargarDataInicial(){
-    this.homeService.getHomeData().subscribe((data : ApiHomeResponse | null) => {
-      this.categorias = data? (data.categorias?? []): [];          //Cargo todoas las categorías
-      this.productosIniciales = data? (data.productos?? []): [];  //Cargo todos los productos
+    this.homeService.getHomeData().subscribe((data : ApiHomeResponse) => {
+      this.categorias = data.categorias?? [];          //Cargo todoas las categorías
+      this.productosIniciales = data.productos?? [];  //Cargo todos los productos
       this.productosFiltrados = this.productosIniciales;          //Inicialmente los productos filtrados serán todos los productos
     });
   }
