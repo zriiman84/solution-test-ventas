@@ -21,9 +21,6 @@
             @if(loginForm.controls['usuario_email'].hasError("minlength")){
               <mat-error>El campo debe tener al menos 6 caracteres</mat-error>
             }
-            @if(loginForm.controls['usuario_email'].hasError("maxlength")){
-              <mat-error>El campo debe tener como máximo 30 caracteres</mat-error>
-            }
             @if(loginForm.controls['usuario_email'].hasError("emailOrUser")){
               <mat-error>Ingrese un usuario o email válido </mat-error>
             }

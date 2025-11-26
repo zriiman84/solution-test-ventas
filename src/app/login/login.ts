@@ -33,12 +33,17 @@ export class Login {
   private userService: UserService;
   private router: Router;
 
-  //Regular Expression para ingresar al menos un dígito numérico del 0 al 9
+  //REGEX para ingresar al menos un dígito numérico del 0 al 9
   readonly regexDigito = /.*[0-9].*/;
-  //Regular Expression para validar un email
+  //REGEX para validar un email
   readonly regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //Regular Expression para ingresar un nombre de usuario (Permite letras, números, punto, guion y subguion)
+  //REGEX para ingresar un nombre de usuario (Permite letras, números, punto, guion y subguion)
   readonly regexUser = /^[a-zA-Z0-9._-]+$/;
+
+   constructor() {
+    this.userService = inject(UserService);
+    this.router = inject(Router);
+  }
 
   // Validador inline dentro de la clase
   //Validaremos 2 regex al mismo tiempo: email o username
@@ -58,7 +63,6 @@ export class Login {
     usuario_email: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
-      Validators.maxLength(30),
       this.emailOrUserValidator,  //validar que sea email o username
     ]),
     password: new FormControl('', [
@@ -67,11 +71,6 @@ export class Login {
       Validators.pattern(this.regexDigito),
     ]),
   });
-
-  constructor() {
-    this.userService = inject(UserService);
-    this.router = inject(Router);
-  }
 
   login() {
     const usuario_email = this.loginForm.controls['usuario_email'].value!;

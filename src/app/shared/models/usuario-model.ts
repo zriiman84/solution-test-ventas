@@ -10,13 +10,25 @@ export interface ApiLoginResponse{
     errorMessage: string | null;
 }
 
-export interface ApiUsuarioRequest{
+export interface ApiRegisterUserRequest{
     firstname: string;
     lastname: string;
     username: string;
     email: string;
     password: string;
-    documenttype: string;
+    confirmpassword: string;
+    documenttype: number; //se validará que se ingrese un entero desde el formulario
     documentnumber: string;
-    age: number;  //se validará que se ingrese un entero en el formulario
+    age: number;  //se validará que se ingrese un entero desde el formulario
+}
+
+export interface ApiRegisterUserResponse{
+  data: {
+    userId: number;
+    token: string;
+    expirationdatetime: string;
+  };
+  sucess: boolean;
+  message: string | null;
+  errorMessage: string | null;
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ApiLoginResponse } from '../../models/usuario-model';
+import { ApiLoginResponse, ApiRegisterUserRequest, ApiRegisterUserResponse } from '../../models/usuario-model';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
@@ -41,7 +41,7 @@ export class UserService {
   }
 
   Login(usuario: string, password: string) {
-    return this.http.post<ApiLoginResponse>(this.UrlBase + 'Login', {
+    return this.http.post<ApiLoginResponse>(this.UrlBase + '/users/Login', {
       username: usuario,
       password: password,
     });
@@ -91,5 +91,9 @@ export class UserService {
       this.router.navigateByUrl('/');
     }
 
+  }
+
+  registerUser(userData : ApiRegisterUserRequest){
+    return this.http.post<ApiRegisterUserResponse>(this.UrlBase + '/users/RegistrarUsuario', userData);
   }
 }
