@@ -50,7 +50,7 @@ export const handleHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
           break;
 
         case 404:
-          alert('Error [404]: El recurso solicitado no existe. Comuníquese con el administrador.');
+          alert('Error [404]: El recurso solicitado no existe.');
           break;
 
         case 500:
