@@ -15,12 +15,12 @@ import { MatSelectModule } from '@angular/material/select';
   imports: [
     SimpleHeader,
     Footer,
-    ReactiveFormsModule,
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './register.html',
   styleUrl: './register.css',
@@ -33,9 +33,9 @@ export class Register {
   readonly regexDigito = /.*[0-9].*/;
   //REGEX para ingresar un nombre de usuario (Permite letras, números, punto, guion y subguion)
   readonly regexUser = /^[a-zA-Z0-9._-]+$/;
-  //REGEX para ingresar un entero positivo (número de documento)
+  //REGEX para ingresar un entero positivo (edad)
   readonly regexEnteroPositivo = /^[0-9]+$/;
-  //REGEX solo número y/o letras
+  //REGEX solo número y/o letras (número de documento)
   readonly regexDocumentNumber = /^[a-zA-Z0-9]+$/;
 
   registerUserForm: FormGroup = new FormGroup({
@@ -79,7 +79,7 @@ export class Register {
     //Ejecutar el método registerUser del UserService
     this.userService.registerUser(userData).subscribe((resp: ApiRegisterUserResponse) => {
       console.log('Registro de usuario exitoso con Id: ', resp.data.userId);
-      alert('Registro de usuario exitoso!');
+      alert('¡Registro de usuario exitoso!');
       this.router.navigateByUrl('/login');
     });
   }

@@ -32,3 +32,16 @@ export interface ApiRegisterUserResponse{
   message: string | null;
   errorMessage: string | null;
 }
+
+export interface BaseResponseGeneric{
+  data: any | null;
+  sucess: boolean;
+  message: string | null;
+  errorMessage: string | null;
+}
+
+export interface BaseResponse{
+  sucess: boolean;
+  message: string | null;
+  errorMessage: string | null;
+}
