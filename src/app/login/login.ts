@@ -78,8 +78,8 @@ export class Login {
 
     this.userService.Login(usuario_email, password).subscribe((resp: ApiLoginResponse) => {
       //Obtenemos el token y expirationdate desde el response del Api
-      const token = resp.data.token;
-      const expirationdatetime = resp.data.expirationdatetime; //Formato UTC
+      const token = resp.Data.Token;
+      const expirationdatetime = resp.Data.ExpirationDateTime; //Formato UTC
 
       //Seteamos el token y expirationdate en el Local Storage
       localStorage.setItem('token', token);

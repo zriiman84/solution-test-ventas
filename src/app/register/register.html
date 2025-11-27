@@ -15,7 +15,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Nombres</mat-label>
             <input matInput type="text" formControlName="firstname" />
-            @if(registerUserForm.controls['firstname'].hasError("requerid")){
+            @if(registerUserForm.controls['firstname'].hasError("required")){
               <mat-error>El campo es obligatorio </mat-error>
             }
             @if(registerUserForm.controls['firstname'].hasError("maxlength")){
@@ -25,7 +25,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Apellidos</mat-label>
             <input matInput type="text" formControlName="lastname" />
-             @if(registerUserForm.controls['lastname'].hasError("requerid")){
+             @if(registerUserForm.controls['lastname'].hasError("required")){
               <mat-error>El campo es obligatorio </mat-error>
             }
             @if(registerUserForm.controls['lastname'].hasError("maxlength")){
@@ -35,7 +35,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Edad</mat-label>
             <input matInput type="number" step="1" formControlName="age" />
-             @if(registerUserForm.controls['age'].hasError("requerid")){
+             @if(registerUserForm.controls['age'].hasError("required")){
               <mat-error>El campo es obligatorio </mat-error>
             }
              @if(registerUserForm.controls['age'].hasError("min")){
@@ -51,7 +51,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Usuario</mat-label>
             <input matInput type="text" formControlName="username" />
-             @if(registerUserForm.controls['username'].hasError("requerid")){
+             @if(registerUserForm.controls['username'].hasError("required")){
               <mat-error>El campo es obligatorio </mat-error>
             }
             @if(registerUserForm.controls['username'].hasError("minlength")){
@@ -67,7 +67,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput type="email" formControlName="email" />
-            @if(registerUserForm.controls['email'].hasError("requerid")){
+            @if(registerUserForm.controls['email'].hasError("required")){
               <mat-error>El campo es obligatorio </mat-error>
             }
              @if(registerUserForm.controls['email'].hasError("email")){
@@ -77,7 +77,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Contraseña</mat-label>
             <input matInput type="password" formControlName="password" />
-            @if(registerUserForm.controls['password'].hasError("requerid")){
+            @if(registerUserForm.controls['password'].hasError("required")){
               <mat-error>El campo es obligatorio </mat-error>
             }
             @if(registerUserForm.controls['password'].hasError("minlength")){
@@ -100,7 +100,7 @@
            <mat-form-field appearance="outline">
             <mat-label>Nro. Documento</mat-label>
             <input matInput type="text" formControlName="documentnumber" />
-             @if(registerUserForm.controls['documentnumber'].hasError("requerid")){
+             @if(registerUserForm.controls['documentnumber'].hasError("required")){
               <mat-error>El campo es obligatorio </mat-error>
             }
             @if(registerUserForm.controls['documentnumber'].hasError("maxlength")){

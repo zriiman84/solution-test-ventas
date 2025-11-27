@@ -15,7 +15,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Usuario o email</mat-label>
             <input type="text" matInput formControlName="usuario_email"/>
-            @if(loginForm.controls['usuario_email'].hasError("requerid")){
+            @if(loginForm.controls['usuario_email'].hasError("required")){
               <mat-error>El campo es obligatorio </mat-error>
             }
             @if(loginForm.controls['usuario_email'].hasError("minlength")){
@@ -28,7 +28,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Contraseña</mat-label>
             <input type="password" matInput formControlName="password"/>
-            @if(loginForm.controls['password'].hasError("requerid")){
+            @if(loginForm.controls['password'].hasError("required")){
               <mat-error>El password es obligatorio </mat-error>
             }
             @if(loginForm.controls['password'].hasError("minlength")){

@@ -1,47 +1,54 @@
 export interface Login{
-  token: string;
-  expirationdatetime: string;
+  Token: string;
+  ExpirationDateTime: string;
 }
 
 export interface ApiLoginResponse{
-    data: Login;
-    sucess: boolean;
-    message: string | null;
-    errorMessage: string | null;
+    Data: Login;
+    Sucess: boolean;
+    Message: string | null;
+    ErrorMessage: string | null;
 }
 
 export interface ApiRegisterUserRequest{
-    firstname: string;
-    lastname: string;
-    username: string;
-    email: string;
-    password: string;
-    confirmpassword: string;
-    documenttype: number; //se validará que se ingrese un entero desde el formulario
-    documentnumber: string;
-    age: number;  //se validará que se ingrese un entero desde el formulario
+    FirstName: string;
+    LastName: string;
+    UserName: string;
+    Email: string;
+    Password: string;
+    ConfirmPassword: string;
+    DocumentType: number; //se validará que se ingrese un entero desde el formulario
+    DocumentNumber: string;
+    Age: number;  //se validará que se ingrese un entero desde el formulario
 }
 
 export interface ApiRegisterUserResponse{
-  data: {
-    userId: number;
-    token: string;
-    expirationdatetime: string;
+  Data: {
+    UserId: number;
+    Token: string;
+    ExpirationDateTime: string;
   };
-  sucess: boolean;
-  message: string | null;
-  errorMessage: string | null;
+  Sucess: boolean;
+  Message: string | null;
+  ErrorMessage: string | null;
 }
 
 export interface BaseResponseGeneric{
-  data: any | null;
-  sucess: boolean;
-  message: string | null;
-  errorMessage: string | null;
+  Data: any | null;
+ Sucess: boolean;
+  Message: string | null;
+  ErrorMessage: string | null;
 }
 
 export interface BaseResponse{
-  sucess: boolean;
-  message: string | null;
-  errorMessage: string | null;
+  Sucess: boolean;
+  Message: string | null;
+  ErrorMessage: string | null;
+}
+
+export interface ApiResetPasswordRequest{
+    Email: string;
+    Token: string;
+    NewPassword: string;
+    ConfirmNewPassword: string;
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ApiLoginResponse, ApiRegisterUserRequest, ApiRegisterUserResponse, BaseResponse } from '../../models/usuario-model';
+import { ApiLoginResponse, ApiRegisterUserRequest, ApiRegisterUserResponse, ApiResetPasswordRequest, BaseResponse } from '../../models/usuario-model';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
@@ -42,8 +42,8 @@ export class UserService {
 
   Login(usuario: string, password: string) {
     return this.http.post<ApiLoginResponse>(this.UrlBase + '/users/Login', {
-      username: usuario,
-      password: password,
+      UserName: usuario,
+      Password: password,
     });
   }
 
@@ -102,6 +102,10 @@ export class UserService {
       {
         email : paramEmail
       });
+  }
+
+  ResetPassword(resetPasswordData : ApiResetPasswordRequest){
+    return this.http.post<BaseResponse>(this.UrlBase + '/users/ResetPassword', resetPasswordData);
   }
 
 

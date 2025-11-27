@@ -65,20 +65,20 @@ export class Register {
 
   registerUser() {
     const userData: ApiRegisterUserRequest = {
-      firstname: this.registerUserForm.controls['firstname'].value!,
-      lastname: this.registerUserForm.controls['lastname'].value!,
-      age: this.registerUserForm.controls['age'].value!,
-      username: this.registerUserForm.controls['username'].value!,
-      email: this.registerUserForm.controls['email'].value!,
-      password: this.registerUserForm.controls['password'].value!,
-      confirmpassword: this.registerUserForm.controls['password'].value!, //por simplicidad, se envía la misma contraseña
-      documenttype: parseInt(this.registerUserForm.controls['documenttype'].value!),
-      documentnumber: this.registerUserForm.controls['documentnumber'].value!,
+      FirstName: this.registerUserForm.controls['firstname'].value!,
+      LastName: this.registerUserForm.controls['lastname'].value!,
+      Age: this.registerUserForm.controls['age'].value!,
+      UserName: this.registerUserForm.controls['username'].value!,
+      Email: this.registerUserForm.controls['email'].value!,
+      Password: this.registerUserForm.controls['password'].value!,
+      ConfirmPassword: this.registerUserForm.controls['password'].value!, //por simplicidad, se envía la misma contraseña
+      DocumentType: parseInt(this.registerUserForm.controls['documenttype'].value!),
+      DocumentNumber: this.registerUserForm.controls['documentnumber'].value!,
     };
 
     //Ejecutar el método registerUser del UserService
     this.userService.registerUser(userData).subscribe((resp: ApiRegisterUserResponse) => {
-      console.log('Registro de usuario exitoso con Id: ', resp.data.userId);
+      console.log('Registro de usuario exitoso con Id: ', resp.Data.UserId);
       alert('¡Registro de usuario exitoso!');
       this.router.navigateByUrl('/login');
     });
