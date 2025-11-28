@@ -1,1 +1,30 @@
-<p>logged-in-header works!</p>
+<header>
+  <div class="logged-in-header-container">
+    <div class="logo-container" routerLink="/">
+      <figure>
+        <img src="images/logo_producto.png" alt="logo" />
+      </figure>
+      <h1>VENTA DE PRODUCTOS</h1>
+    </div>
+    @if(userService.getIsLoggedIn()){
+    <div class="name-container">
+      <span> {{ userService.getName() + ' - ' + userService.getRole() }} </span>
+    </div>
+    <div class="buttons-container">
+      <button
+        class="primary"
+        matButton
+        [routerLink]="userService.getRole() === 'Administrator' ? '/admin' : '/customer'"
+      >
+        MI CUENTA
+      </button>
+      <button class="accent" matButton (click)="logout()">CERRAR SESIÓN</button>
+    </div>
+    } @else{
+    <div class="buttons-container">
+      <button class="primary" matButton routerLink="/login">INGRESAR</button>
+      <button class="accent" matButton routerLink="/register">REGÍSTRATE</button>
+    </div>
+    }
+  </div>
+</header>

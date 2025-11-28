@@ -6,7 +6,7 @@ import { Register } from './register/register';
 import { ForgotPassword } from './forgot-password/forgot-password';
 import { Admin } from './admin/admin';
 import { Customer } from './customer/customer';
-import { ResetPasswordDialog } from './forgot-password/reset-password-dialog/reset-password-dialog';
+import { ProductDetail } from './product-detail/product-detail';
 
 export const routes: Routes = [
   {
@@ -32,5 +32,9 @@ export const routes: Routes = [
   {
     path: 'customer',
     component: Customer,
+  },
+  {
+    path: 'product-detail',
+    component: ProductDetail,
   },
 ];

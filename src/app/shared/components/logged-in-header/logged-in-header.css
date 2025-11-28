@@ -1,0 +1,42 @@
+header {
+  background-color: var(--secondary-color);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  & .logged-in-header-container {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      & img {
+        width: 50px;
+        height: 50px;
+      }
+      & h1 {
+        font-size: 16px;
+        color: white;
+        font-weight: 500;
+        margin: 0;
+      }
+    }
+    & .name-container {
+      display: flex;
+      justify-content: center;
+      width: 500px;
+      & span {
+        color: white;
+      }
+    }
+    & .buttons-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+}
