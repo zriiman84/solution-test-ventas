@@ -6,8 +6,9 @@ import { MatInputModule } from '@angular/material/input';
 import { UserService } from '../../shared/services/user-service/user-service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogRef } from '@angular/cdk/dialog';
-import { ApiResetPasswordRequest, BaseResponse } from '../../shared/models/usuario-model';
+import { ApiResetPasswordRequest } from '../../shared/models/usuario.model';
 import { Router } from '@angular/router';
+import { BaseResponse } from '../../shared/models/generic.model';
 
 @Component({
   selector: 'app-reset-password-dialog',

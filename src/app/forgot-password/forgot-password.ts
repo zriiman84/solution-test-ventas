@@ -7,9 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { UserService } from '../shared/services/user-service/user-service';
-import { BaseResponse } from '../shared/models/usuario-model';
 import { MatDialog } from '@angular/material/dialog';
 import { ResetPasswordDialog } from './reset-password-dialog/reset-password-dialog';
+import { BaseResponse } from '../shared/models/generic.model';
 
 @Component({
   selector: 'app-forgot-password',

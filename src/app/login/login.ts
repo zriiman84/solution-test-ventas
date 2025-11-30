@@ -13,7 +13,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../shared/services/user-service/user-service';
-import { ApiLoginResponse } from '../shared/models/usuario-model';
+import { ApiLoginResponse } from '../shared/models/usuario.model';
 
 @Component({
   selector: 'app-login',

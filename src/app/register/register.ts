@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { UserService } from '../shared/services/user-service/user-service';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ApiRegisterUserRequest, ApiRegisterUserResponse } from '../shared/models/usuario-model';
+import { ApiRegisterUserRequest, ApiRegisterUserResponse } from '../shared/models/usuario.model';
 import { Router, RouterLink } from '@angular/router';
 import { SimpleHeader } from '../shared/components/simple-header/simple-header';
 import { Footer } from '../shared/components/footer/footer';

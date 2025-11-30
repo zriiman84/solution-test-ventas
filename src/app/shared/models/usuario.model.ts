@@ -33,19 +33,6 @@ export interface ApiRegisterUserResponse{
   ErrorMessage: string | null;
 }
 
-export interface BaseResponseGeneric{
-  Data: any | null;
- Sucess: boolean;
-  Message: string | null;
-  ErrorMessage: string | null;
-}
-
-export interface BaseResponse{
-  Sucess: boolean;
-  Message: string | null;
-  ErrorMessage: string | null;
-}
-
 export interface ApiResetPasswordRequest{
     Email: string;
     Token: string;
