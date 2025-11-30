@@ -44,7 +44,7 @@ export class ProductDetail {
 
     //Si el rol es Administrator se mostrará una alerta indicando que este rol no puede comprar productos.
     if (this.userService.getRole() === 'Administrator') {
-      alert('Los administradores no pueden comprar boletos');
+      alert('Los administradores no pueden comprar productos');
       return;
     }
 
