@@ -1,15 +1,15 @@
 <div class="product-card-container">
   <div class="top-product-card">
-      <span class="name">{{dataProducto.nombre}}</span>
-      <span class="price">S/ {{dataProducto.precio.toFixed(2)}}</span>
+      <span class="name">{{dataProducto.Nombre}}</span>
+      <span class="price">S/ {{dataProducto.PrecioUnitario.toFixed(2)}}</span>
   </div>
   <div class="middle-product-card">
-      <img [src]="dataProducto.imageUrl" alt="Producto" (error)="cargarImagenDefault()"/>
+      <img [src]="dataProducto.ImageUrl" alt="Producto" (error)="cargarImagenDefault()"/>
   </div>
   <div class="bottom-product-card">
     <span class="description">
-      {{dataProducto.descripcion}}
+      {{dataProducto.Descripcion}}
     </span>
-    <span class="category"> {{dataProducto.nombreCategoriaProducto | uppercase}} </span>
+    <span class="category"> {{dataProducto.NombreCategoriaProducto| uppercase}} </span>
   </div>
 </div>

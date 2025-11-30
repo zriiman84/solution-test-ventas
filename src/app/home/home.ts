@@ -11,10 +11,11 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ApiHomeResponse } from '../shared/models/api-home.model';
 import { ProductService } from '../shared/services/product-service/product-service';
 import { ResaltarProductCard } from '../shared/directives/home-directive/resaltar-product-card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [HomeHeader, ProductCard, Footer, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, ResaltarProductCard],
+  imports: [HomeHeader, ProductCard, Footer, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, ResaltarProductCard, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -36,6 +37,7 @@ export class Home {
   }
 
   ngOnInit(){
+
     //cargar data inicial de categorías y productos
     this.cargarDataInicial();
 
@@ -64,32 +66,30 @@ export class Home {
     if(this.categoriaSeleccionadaId === 0){
       this.productosFiltrados = this.productosIniciales;
     }else{
-      this.productosFiltrados = this.productosIniciales.filter(p => p.idCategoriaProducto === this.categoriaSeleccionadaId);
+      this.productosFiltrados = this.productosIniciales.filter(p => p.CategoriaProductoId === this.categoriaSeleccionadaId);
     }
   }
 
   filtrarPorNombre(){
-    //Búsqueda por api endpoint no es óptimo
     //Búsqueda óptima en memoria, en base al universo de productos iniciales
     if(!this.valorBusquedaProducto)return;
-    this.productosFiltrados = this.productosFiltrados.filter(p => p.nombre.toLowerCase().includes(this.valorBusquedaProducto.toLowerCase()));
+    this.productosFiltrados = this.productosFiltrados.filter(p => p.Nombre.toLowerCase().includes(this.valorBusquedaProducto.toLowerCase()));
   }
 
   //Búsqueda por valor ingresado - Se ejecuta desde el componente hijo HomeHeader y se realiza una petición por cada dígito ingresado
   obtenerProductos(valorBusqueda: string) {
-    console.log('Home - valor de búsqueda:', valorBusqueda);
     this.valorBusquedaProducto = valorBusqueda;
     this.filtrarProductos();
   }
 
+  //Búsqueda por api endpoint - No es óptimo para cada dígito ingresado
   obtenerProductosPorNombre(nombre: string){
     this.productService.getProductByNombre(nombre).subscribe((response) => {
-      if(!response.sucess && response.errorMessage){
-        console.error('Error al obtener productos por nombre [' + nombre + '] - Error: ', response.errorMessage);
+      if(!response.Sucess && response.ErrorMessage){
+        alert('Error al obtener productos por nombre [' + nombre + '] - Error: ' + response.ErrorMessage);
         return;
       }
-      console.log('Resultado de búsqueda por nombre [' + nombre + ']: ', response.message);
-      this.productosFiltrados = response.data ?? [];
+      this.productosFiltrados = response.Data ?? [];
     });
   }
 

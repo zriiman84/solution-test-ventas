@@ -35,6 +35,12 @@ export const routes: Routes = [
   },
   {
     path: 'product-detail',
+    pathMatch: 'full',
+    redirectTo: '', //Redirigir a home si no se proporciona un id de producto en la ruta
+  },
+   {
+    path: 'product-detail/:id',
+    pathMatch: 'full',
     component: ProductDetail,
   },
 ];

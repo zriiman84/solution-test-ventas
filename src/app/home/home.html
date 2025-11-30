@@ -13,9 +13,10 @@
     <span class="product-category">Selecciona tu categoría de producto</span>
   </div>
   <div class="product-list-container">
-    @for(producto of productosFiltrados; track producto.id) {
-      <app-product-card appResaltarProductCard [dataProducto]="producto"></app-product-card>
+    @for(producto of productosFiltrados; track producto.Id) {
+      <app-product-card [routerLink]="'/product-detail/' + producto.Id" appResaltarProductCard [dataProducto]="producto"></app-product-card>
     }
+
   </div>
 </div>
 <app-footer></app-footer>

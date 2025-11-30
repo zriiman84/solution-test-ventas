@@ -13,7 +13,7 @@ export class ProductCard {
 @Input({ required: true }) dataProducto!: Producto; //se enviará un objeto de tipo Producto desde el componenten PADRE
 
 cargarImagenDefault() {
-  this.dataProducto.imageUrl = 'images/producto_default.jpg';
+  this.dataProducto.ImageUrl = 'images/producto_default.jpg';
 }
 
 }

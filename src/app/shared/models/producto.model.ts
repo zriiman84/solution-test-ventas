@@ -1,26 +1,26 @@
 export interface Producto{
-  id: number;
-  nombre: string;
-  descripcion: string;
-  precio: number;
-  imageUrl: string | null;
-  stock: number;
-  idCategoriaProducto: number;
-  nombreCategoriaProducto: string;
-  status: string;
+  Id: number;
+  Nombre: string;
+  Descripcion: string;
+  PrecioUnitario: number;
+  ImageUrl: string | null;
+  Stock: number;
+  CategoriaProductoId: number;
+  NombreCategoriaProducto: string;
+  Status: string;
 }
 
-export interface ApiProductoResponseById{
-  data: Producto | null;
-  sucess: boolean;
-  message: string | null;
-  errorMessage: string | null;
+export interface ApiProductoByIdResponse{
+  Data: Producto | null;
+  Sucess: boolean;
+  Message: string | null;
+  ErrorMessage: string | null;
 }
 
-export interface ApiProductoResponseByNombre{
-  data: Producto[] | null;
-  sucess: boolean;
-  message: string | null;
-  errorMessage: string | null;
+export interface ApiProductoByNombreResponse{
+  Data: Producto[] | null;
+  Sucess: boolean;
+  Message: string | null;
+  ErrorMessage: string | null;
 }
 
