@@ -24,7 +24,6 @@ export interface DetalleVentaInfo{
 export interface ApiVentaRequest{
   EmpleadoId: number | null;
   DetalleVenta: DetalleVentaRequest[];
-
 }
 
 export interface DetalleVentaRequest{

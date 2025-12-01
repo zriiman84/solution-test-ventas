@@ -7,6 +7,7 @@ import { ApiProductoByIdResponse, Producto } from '../shared/models/producto.mod
 import { UserService } from '../shared/services/user-service/user-service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../shared/services/product-service/product-service';
+import { AddProductBuyDialog } from './add-product-buy-dialog/add-product-buy-dialog';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,6 +16,7 @@ import { ProductService } from '../shared/services/product-service/product-servi
   styleUrl: './product-detail.css',
 })
 export class ProductDetail {
+
   producto: Producto | null = null;
   private userService = inject(UserService);
   private activatedRoute = inject(ActivatedRoute); //Inyectamos la clase ActivatedRoute para poder interactuar con la URL Actual
@@ -25,7 +27,7 @@ export class ProductDetail {
 
   ngOnInit() {
 
-    this.eventId = this.activatedRoute.snapshot.paramMap.get('id') ?? '0'; // Obtengo el id de la ruta definido con la variable 'id' en app.route.ts
+    this.eventId = this.activatedRoute.snapshot.paramMap.get('id') ?? '0'; // Obtengo el id de la ruta
 
     //Obtengo el producto desde el servicio
     this.productService.getProductById(this.eventId).subscribe((res: ApiProductoByIdResponse) => {
@@ -48,6 +50,13 @@ export class ProductDetail {
       return;
     }
 
-    alert('Producto agregado al carrito de compras.');
+    const productBuyDialog = this.matDialog.open(AddProductBuyDialog, {
+      data: this.producto
+    });
+
+    productBuyDialog.afterClosed().subscribe(() => {
+        this.router.navigateByUrl('/');
+    });
+
   }
 }

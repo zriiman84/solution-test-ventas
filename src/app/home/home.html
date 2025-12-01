@@ -14,9 +14,12 @@
   </div>
   <div class="product-list-container">
     @for(producto of productosFiltrados; track producto.Id) {
-      <app-product-card [routerLink]="'/product-detail/' + producto.Id" appResaltarProductCard [dataProducto]="producto"></app-product-card>
+    <app-product-card
+      [routerLink]="'/product-detail/' + producto.Id"
+      appResaltarProductCard
+      [dataProducto]="producto"
+    ></app-product-card>
     }
-
   </div>
 </div>
 <app-footer></app-footer>
