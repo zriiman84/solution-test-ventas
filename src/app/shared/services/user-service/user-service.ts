@@ -4,6 +4,7 @@ import { ApiLoginResponse, ApiRegisterUserRequest, ApiRegisterUserResponse, ApiR
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { BaseResponse } from '../../models/generic.model';
+import { VentaService } from '../venta-service/venta-service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,7 @@ import { BaseResponse } from '../../models/generic.model';
 export class UserService {
   private UrlBase: string = 'http://localhost:7060/api/';
   private http = inject(HttpClient);
+  private ventaService = inject(VentaService);
 
   //Definiendo variables
   private tokenExpiration = new Date();
@@ -82,6 +84,8 @@ export class UserService {
     this.name = '';
     this.tokenExpiration = new Date();
     this.isLoggedIn = false;
+
+    this.ventaService.resetShoppingCar();
 
     //Valido si el parámetro flagExpirationToken es TRUE / FALSE, para redirigir al /Login o al Home /.
     if (flagExpirationToken) {

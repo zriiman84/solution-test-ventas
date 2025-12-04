@@ -2,7 +2,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { handleHttpErrorInterceptor, tokenExpiredInterceptor } from './shared/interceptors/validaciones-interceptor';
+import { handleHttpErrorInterceptor, jwtHeaderInterceptor, tokenExpiredInterceptor } from './shared/interceptors/validaciones-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -10,6 +10,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(  //matriculamos el proveedor de HttpClient
-      withInterceptors([tokenExpiredInterceptor, handleHttpErrorInterceptor]))   //matriculamos los interceptores
+      withInterceptors([tokenExpiredInterceptor, handleHttpErrorInterceptor, jwtHeaderInterceptor]))   //matriculamos los interceptores
   ]
 };

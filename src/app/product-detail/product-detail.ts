@@ -7,7 +7,8 @@ import { ApiProductoByIdResponse, Producto } from '../shared/models/producto.mod
 import { UserService } from '../shared/services/user-service/user-service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../shared/services/product-service/product-service';
-import { AddProductBuyDialog } from './add-product-buy-dialog/add-product-buy-dialog';
+import { AddProductBuyDialog } from '../shared/components/add-product-buy-dialog/add-product-buy-dialog';
+
 
 @Component({
   selector: 'app-product-detail',

@@ -7,6 +7,7 @@ import { ForgotPassword } from './forgot-password/forgot-password';
 import { Admin } from './admin/admin';
 import { Customer } from './customer/customer';
 import { ProductDetail } from './product-detail/product-detail';
+import { ShoppingCar } from './shared/components/shopping-car/shopping-car';
 
 export const routes: Routes = [
   {
@@ -43,4 +44,8 @@ export const routes: Routes = [
     pathMatch: 'full',
     component: ProductDetail,
   },
+  {
+    path: 'shopping-car',
+    component: ShoppingCar,
+  }
 ];

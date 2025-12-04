@@ -37,8 +37,15 @@ header {
     }
     & .buttons-container {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       gap: 10px;
+      & .shopping-car{
+        cursor: pointer;
+        & img {
+        width: 35px;
+        height: 35px;
+      }
+      }
     }
   }
 }

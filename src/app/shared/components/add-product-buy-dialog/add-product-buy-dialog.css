@@ -2,7 +2,7 @@
         background-color: var(--secondary-color);
         border-radius: 8px;
         height:360;
-        width: 280px;
+        width: 300px;
         box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 4px;
         display: flex;
         flex-direction: column;
@@ -11,7 +11,10 @@
         & .title-card {
           display: flex;
           flex-direction: column;
+          justify-content: center;
           align-items: center;
+          padding-left: 15px;
+          padding-right: 15px;
           margin-top: 30px;
           gap: 10px;
           & .title {
@@ -19,6 +22,12 @@
             color: var(--primary-color);
             font-weight: 500;
             font-size: 18px;
+            text-align: center;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 2; /*Limitar a máximo 5 líneas*/
+            line-clamp: 2;
           }
           & .price {
             color: white;

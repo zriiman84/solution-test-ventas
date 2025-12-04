@@ -1,0 +1,59 @@
+.shopping-car-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  & .principal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    gap: 30px;
+    & .title-container {
+      display: flex;
+      justify-content: center;
+      width: 1000px;
+      margin-top: 40px;
+      font-weight: 500;
+      font-size: 16px;
+      & .accent-title {
+        color: var(--accent-color);
+      }
+    }
+    & .content-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      gap: 20px;
+      width: 1000px;
+      & .total-container {
+        font-weight: 500;
+        font-size: 18px;
+        margin-top: 30px;
+        align-items: center;
+        & .total{
+          color: var(--accent-color);
+        }
+      }
+      & .actions {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+          & .buy{
+            color: white;
+            width: 210px;
+            background-color: var(--accent-color);
+          }
+          & .home{
+            width: 210px;
+            background-color: var(--primary-color);
+          }
+        }
+    }
+  }
+}

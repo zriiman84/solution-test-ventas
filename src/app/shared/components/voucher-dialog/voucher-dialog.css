@@ -1,0 +1,88 @@
+.card {
+  width: 560px;
+  max-height: 560px;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & h2 {
+    height: 20px;
+    margin-top: 30px;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 18px;
+  }
+  & .container {
+    margin-top: 20px;
+    max-height: 500px;
+    font-weight: 500;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    & .cabecera-voucher {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 14px;
+      gap: 10px;
+      & .label {
+        color: var(--primary-color);
+      }
+      & .total {
+        margin-top: 20px;
+        color: var(--primary-color);
+        font-size: 18px;
+        & .total-value {
+          color: var(--accent-color);
+          margin-left: 10px;
+        }
+      }
+    }
+
+    & .detalle-voucher {
+      margin-top: 20px;
+      max-height: 250px;
+      overflow-y: auto; /* activa el scroll vertical */
+      & table {
+        display: block !important;  /*Angular Material coloca la tabla como display: table y hace que la tabla no se comporte como un objeto normal*/
+        width: 100%;
+        max-height: inherit; /* respeta el límite del contenedor */
+        overflow-y: auto;
+      }
+      /* Forzar que las filas no expandan más de lo permitido */
+      &  .mat-mdc-cell,
+          .mat-mdc-header-cell {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      /*Formato a la celdas de la tabla*/
+      & .mat-mdc-cell {
+        font-size: 12px;
+      }
+      /*Formato a la cabecera de la tabla*/
+      & .mat-mdc-header-cell {
+        color: var(--accent-color);
+      }
+    }
+
+    & .actions {
+      margin-top: 30px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      & button {
+        width: 100px;
+        color: white;
+        background-color: var(--accent-color);
+      }
+    }
+  }
+}

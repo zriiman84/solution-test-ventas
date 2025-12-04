@@ -1,4 +1,4 @@
-export interface Venta{
+export interface Venta {
   IdVenta: number;
   ClienteId: number;
   EmpleadoId: number | null;
@@ -12,43 +12,52 @@ export interface Venta{
   DetalleVenta: DetalleVentaInfo[];
 }
 
-export interface DetalleVentaInfo{
+export interface DetalleVentaInfo {
   ProductoId: number;
   NombreProducto: string;
   CategoriaProductoId: number;
   NombreCategoriaProducto: string;
   Cantidad: number;
+  Precio: number;
   SubTotal: number;
 }
 
-export interface ApiVentaRequest{
+export interface ApiVentaRequest {
   EmpleadoId: number | null;
   DetalleVenta: DetalleVentaRequest[];
 }
 
-export interface DetalleVentaRequest{
+export interface DetalleVentaRequest {
   ProductoId: number;
   Cantidad: number;
 }
 
-export interface ApiVentaResponse{
+export interface ApiVentaResponse {
   Data: number;
   Sucess: boolean;
   Message: string | null;
   ErrorMessage: string | null;
 }
 
-export interface ApiVentaByIdResponse{
+export interface ApiVentaByIdResponse {
   Data: Venta | null;
   Sucess: boolean;
   Message: string | null;
   ErrorMessage: string | null;
 }
 
-export interface ApiVentaByFiltersResponse{
+export interface ApiVentaByFiltersResponse {
   Data: Venta[] | null;
   Sucess: boolean;
   Message: string | null;
   ErrorMessage: string | null;
 }
 
+export interface ShoppingCarItem {
+  Id: number;
+  NombreProducto: string;
+  PrecioUnitario: number;
+  Cantidad: number;
+  SubTotal: number;
+  CategoriaProducto: string;
+}

@@ -66,3 +66,20 @@ export const handleHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
     })
   );
 };
+
+//Interceptor para enviar el token en la header de la petición
+export const jwtHeaderInterceptor: HttpInterceptorFn = (req, next) => {
+
+  const token = localStorage.getItem('token');
+  if (token) {
+    return next(
+      // Clonamos la solicitud y agregamos el header Authorization
+      req.clone({
+        headers: req.headers.set('Authorization', 'Bearer ' + token),
+      })
+    );
+  }
+
+  //Si el TOKEN es nulo, retornamos el REQUEST tal cual como vino
+  return next(req);
+};

@@ -15,11 +15,8 @@ export class VentaService {
   private UrlBase: string = 'http://localhost:7060/api/';
   private http = inject(HttpClient);
 
-  //No se usuará el id Empleado (el endpoint admite null) por tratarse de una compra online
-  private requestVenta: ApiVentaRequest = {
-    EmpleadoId: null,
-    DetalleVenta: [],
-  };
+
+  private detalleVenta: DetalleVentaRequest[] = [];
 
   //Agregar en memoria el item de venta
   addItemVenta(itemVenta: DetalleVentaRequest) {
@@ -28,7 +25,7 @@ export class VentaService {
     let listaCantidadProductos: string = '';
 
     // Agregar elementos distintos
-    if (!this.requestVenta.DetalleVenta.some((c) => c.ProductoId === itemVenta.ProductoId)) {
+    if (!this.detalleVenta.some((c) => c.ProductoId === itemVenta.ProductoId)) {
 
       //Setear al Local Storage
       if (localStorage.getItem('ListaProductosId')) {
@@ -51,25 +48,34 @@ export class VentaService {
     }else{
 
       //En caso de existir mismo producto con otra cantidad - actualizo la cantidad
-      alert('El producto ya fue agregado al carrito, se reemplazará la cantidad');
+      const index = this.detalleVenta.findIndex((p) => p.ProductoId === itemVenta.ProductoId);
+      this.detalleVenta[index].Cantidad = itemVenta.Cantidad;  //actualizo la nueva cantidad
 
-      const index = this.requestVenta.DetalleVenta.findIndex((p) => p.ProductoId === itemVenta.ProductoId);
-      this.requestVenta.DetalleVenta[index].Cantidad = itemVenta.Cantidad;  //actualizo la nueva cantidad
-
-      localStorage.setItem('ListaProductosId', this.requestVenta.DetalleVenta.map(p => p.ProductoId).join("|"));
-      localStorage.setItem('ListaCantidadProductos', this.requestVenta.DetalleVenta.map(p => p.Cantidad).join("|"));
+      localStorage.setItem('ListaProductosId', this.detalleVenta.map(p => p.ProductoId).join("|"));
+      localStorage.setItem('ListaCantidadProductos', this.detalleVenta.map(p => p.Cantidad).join("|"));
 
       }
 
       this.getLocalStorage();
   }
 
-  getVentaRequest() {
-    return this.requestVenta;
+  resetShoppingCar(){
+    this.detalleVenta.length = 0;
+  }
+
+  deleteItem(id : number){
+
+    const index = this.detalleVenta.findIndex(p => p.ProductoId === id);
+    this.detalleVenta.splice(index, 1);
+
+    localStorage.setItem('ListaProductosId', this.detalleVenta.map(p => p.ProductoId).join("|"));
+    localStorage.setItem('ListaCantidadProductos', this.detalleVenta.map(p => p.Cantidad).join("|"));
+
+    this.getLocalStorage();
   }
 
   getItemsVenta() {
-    return this.requestVenta.DetalleVenta;
+    return this.detalleVenta;
   }
 
   getLocalStorage() {
@@ -79,7 +85,7 @@ export class VentaService {
     let arregloListaProductosId: string[] = [];
     let arregloCantidadProductos: string[] = [];
     let itemVenta: DetalleVentaRequest;
-    this.requestVenta.DetalleVenta = [];
+    this.detalleVenta = [];
 
     listaProductosId = localStorage.getItem('ListaProductosId');
     listaCantidadProducto = localStorage.getItem('ListaCantidadProductos');
@@ -104,7 +110,7 @@ export class VentaService {
         ProductoId: parseInt(idprod),
         Cantidad: parseInt(arregloCantidadProductos[index]),
       };
-      this.requestVenta.DetalleVenta.push(itemVenta);
+      this.detalleVenta.push(itemVenta);
     });
   }
 
