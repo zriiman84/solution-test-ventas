@@ -76,7 +76,10 @@ export class UserService {
   logout(flagExpirationToken : boolean){
 
     //Limpiamos el contenido del LOCAL STORAGE
-    localStorage.clear();
+    //localStorage.clear();
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationdatetime');
+
 
     //Reseteo todas mis variables del servicio
     this.role = '';

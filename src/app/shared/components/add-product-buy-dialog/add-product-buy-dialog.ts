@@ -6,8 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { VentaService } from '../../services/venta-service/venta-service';
 import { Producto } from '../../models/producto.model';
+import { ShoppingCarService } from '../../services/shopping-car-service/shopping-car-service';
 
 @Component({
   selector: 'app-add-product-buy-dialog',
@@ -17,7 +17,7 @@ import { Producto } from '../../models/producto.model';
 })
 export class AddProductBuyDialog {
 
-  private ventaService = inject(VentaService);
+  private carService = inject(ShoppingCarService);
 
   private router = inject(Router);
 
@@ -29,7 +29,7 @@ export class AddProductBuyDialog {
   addProductToShoppingCar(cantidad: number){
 
     //Agregar el producto en memoria persistente
-    this.ventaService.addItemVenta({
+    this.carService.addItem({
       ProductoId: this.data.Id,
       Cantidad: cantidad,
     });

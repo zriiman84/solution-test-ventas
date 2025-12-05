@@ -12,9 +12,10 @@ import { MatIcon } from '@angular/material/icon';
 import { ProductService } from '../shared/services/product-service/product-service';
 import { CategoryService } from '../shared/services/category-service/category-service';
 import { UserService } from '../shared/services/user-service/user-service';
-import { CategoriaProducto } from '../shared/models/categoria.model';
+import { ApiCategoriaByFilterResponse, CategoriaProducto } from '../shared/models/categoria.model';
 import { LoggedInHeader } from '../shared/components/logged-in-header/logged-in-header';
 import { Footer } from '../shared/components/footer/footer';
+import { ApiProductoResponse } from '../shared/models/producto.model';
 
 @Component({
   selector: 'app-product',

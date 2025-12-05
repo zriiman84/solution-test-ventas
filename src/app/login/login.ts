@@ -14,6 +14,7 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../shared/services/user-service/user-service';
 import { ApiLoginResponse } from '../shared/models/usuario.model';
+import { ShoppingCarService } from '../shared/services/shopping-car-service/shopping-car-service';
 
 @Component({
   selector: 'app-login',
@@ -30,8 +31,6 @@ import { ApiLoginResponse } from '../shared/models/usuario.model';
   styleUrl: './login.css',
 })
 export class Login {
-  private userService: UserService;
-  private router: Router;
 
   //REGEX para ingresar al menos un dígito numérico del 0 al 9
   readonly regexDigito = /.*[0-9].*/;
@@ -40,10 +39,9 @@ export class Login {
   //REGEX para ingresar un nombre de usuario (Permite letras, números, punto, guion y subguion)
   readonly regexUser = /^[a-zA-Z0-9._-]+$/;
 
-   constructor() {
-    this.userService = inject(UserService);
-    this.router = inject(Router);
-  }
+  userService = inject(UserService);
+  carService = inject(ShoppingCarService);
+  router = inject(Router);
 
   // Validador inline dentro de la clase
   //Validaremos 2 regex al mismo tiempo: email o username
@@ -90,6 +88,9 @@ export class Login {
       this.userService.decodeToken();
 
       alert('Usuario: "' + this.userService.getName() + '" ha iniciado sesión.');
+
+        //Obtener desde Local Storage los productos agregados en memoria
+      this.carService.loadCar();
 
       //Navegamos al HOME por defecto
       this.router.navigateByUrl('/');
