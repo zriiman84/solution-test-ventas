@@ -85,8 +85,6 @@ export class UserService {
     this.tokenExpiration = new Date();
     this.isLoggedIn = false;
 
-    this.ventaService.resetShoppingCar();
-
     //Valido si el parámetro flagExpirationToken es TRUE / FALSE, para redirigir al /Login o al Home /.
     if (flagExpirationToken) {
       alert('El Token ha expirado. Debe volver a iniciar sesión.');

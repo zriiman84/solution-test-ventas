@@ -1,0 +1,116 @@
+<div class="register-page-container">
+  <app-logged-in-header></app-logged-in-header>
+  <div class="principal-container">
+    <div class="title-container">
+      <div class="title">
+        <span>Registra un nuevo producto</span>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="card">
+        <div class="title-card">
+          <span>REGISTRO</span>
+        </div>
+        <form [formGroup]="productForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" formControlName="name" />
+            @if(productForm.controls['name'].hasError("required")){
+            <mat-error>El campo es obligatorio</mat-error>
+            } @if(productForm.controls['name'].hasError("maxlength")){
+            <mat-error>El campo debe tener máximo 100 caracteres </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <input matInput type="text" formControlName="description" />
+            @if(productForm.controls['description'].hasError("maxlength")){
+            <mat-error>El campo debe tener máximo 200 caracteres </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Detalle</mat-label>
+            <textarea
+              matInput
+              placeholder="Detalle opcional del producto..."
+              formControlName="extendedDescription"
+            ></textarea>
+            @if(productForm.controls['extendedDescription'].hasError("maxlength")){
+            <mat-error>El campo debe tener máximo 800 caracteres </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Precio</mat-label>
+            <input matInput type="number" formControlName="price" />
+            @if(productForm.controls['price'].hasError("required")){
+            <mat-error>El campo es obligatorio </mat-error>
+            } @if(productForm.controls['price'].hasError("min")){
+            <mat-error>El campo sólo admite mínimo 1 elemento</mat-error>
+            }
+            @if(productForm.controls['price'].hasError("pattern")){
+            <mat-error>El campo sólo admite 6 enteros y máximo 2 decimales</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Stock</mat-label>
+            <input matInput type="number" step="1" formControlName="stock" />
+            @if(productForm.controls['stock'].hasError("required")){
+            <mat-error>El campo es obligatorio </mat-error>
+            } @if(productForm.controls['stock'].hasError("min")){
+            <mat-error>El campo admite mínimo 1 elemento </mat-error>
+            } @if(productForm.controls['stock'].hasError("pattern")){
+            <mat-error>El campo sólo admite enteros</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Categoría</mat-label>
+            <mat-select formControlName="productCategory">
+              @for(categoria of categorias; track categoria.Id) {
+              <mat-option [value]="categoria.Id">{{ categoria.Nombre }}</mat-option>
+              }
+            </mat-select>
+            <mat-error>El password es obligatorio </mat-error>
+          </mat-form-field>
+          <!-- Imagen (input file) -->
+          <div class="image-section">
+            <div class="image-preview-container">
+              @if(imageUrl!=='*'){
+              <img [src]="imageUrl" alt="Vista Previa de Imagen" class="image-preview" />
+              }
+            </div>
+            <div class="file-controls-group">
+              <span class="file-name-display">{{ fileName }}</span>
+              <label for="file-upload" class="custom-file-upload">
+                <mat-icon>camera_alt</mat-icon> <span>CARGAR IMAGEN</span>
+              </label>
+              <button mat-flat-button type="button" (click)="resetImage()">
+                QUITAR ARCHIVO
+              </button>
+              <!--Input file real (oculto)-->
+              <input id="file-upload" type="file" type="file" accept=".jpg,.jpeg,.png" (change)="onFileSelected($event)" />
+              <!-- Errores del archivo -->
+              @if(productForm.controls['imageFile'].hasError("invalidType")){
+              <mat-error>El archivo sólo admite archivos [JPG/JPEG/PNG]</mat-error>
+              } @if(productForm.controls['imageFile'].hasError("maxSizeExceeded")){
+              <mat-error>El archivo puede ser máximo de 1MB</mat-error>
+              }
+
+              <span class="label-file"> (JPG/JPEG/PNG máx. 1MB - Opcional) </span>
+            </div>
+          </div>
+          <!---->
+          <button
+            mat-flat-button
+            type="button"
+            class="primary"
+            (click)="registerProduct()"
+            [disabled]="productForm.invalid"
+          >
+            REGISTRAR
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

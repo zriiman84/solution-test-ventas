@@ -84,7 +84,7 @@ export class Home {
 
   //Búsqueda por api endpoint - No es óptimo para cada dígito ingresado
   obtenerProductosPorNombre(nombre: string){
-    this.productService.getProductByNombre(nombre).subscribe((response) => {
+    this.productService.getProductByName(nombre).subscribe((response) => {
       this.productosFiltrados = response.Data ?? [];
     });
   }

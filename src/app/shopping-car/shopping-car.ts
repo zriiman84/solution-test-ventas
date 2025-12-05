@@ -58,6 +58,13 @@ export class ShoppingCar {
       return;
     }
 
+    //Si el rol  es Administrator se mostrará una alerta
+    if (this.usuarioService.getRole() === 'Administrator') {
+      alert('Los administradores no pueden comprar productos.');
+      this.router.navigateByUrl('/');
+      return;
+    }
+
     this.listaDetalleVenta = this.ventaService.getItemsVenta();
 
     if (this.listaDetalleVenta.length <= 0) {
@@ -178,6 +185,8 @@ export class ShoppingCar {
         zIndex: 1002, //ingreso un valor mayor para que el confetti esté por encima de todo.
       });
 
+      this.resetShoppingCar();
+
       //Invocar al voucher-dialog
       const voucherDialog = this.matDialog.open(VoucherDialog, {
         data: ventaId,
@@ -192,5 +201,13 @@ export class ShoppingCar {
 
   returnToHome() {
     this.router.navigateByUrl('/');
+  }
+
+  resetShoppingCar(){
+    this.ventaService.resetShoppingCar();
+    this.listaShoppingCar.length = 0;
+    localStorage.removeItem('ListaProductosId');
+    localStorage.removeItem('ListaCantidadProductos');
+
   }
 }
