@@ -1,25 +1,23 @@
 import { Component, inject } from '@angular/core';
-
-
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { Footer } from '../footer/footer';
-import { LoggedInHeader } from '../logged-in-header/logged-in-header';
-import { UserService } from '../../services/user-service/user-service';
-import { VentaService } from '../../services/venta-service/venta-service';
-import { ProductService } from '../../services/product-service/product-service';
-import { ApiVentaRequest, ApiVentaResponse, DetalleVentaRequest, ShoppingCarItem } from '../../models/venta.model';
-import { ApiProductoByIdResponse, Producto } from '../../models/producto.model';
-import { AddProductBuyDialog } from '../add-product-buy-dialog/add-product-buy-dialog';
-import { VoucherDialog } from '../voucher-dialog/voucher-dialog';
 import confetti from 'canvas-confetti';
+import { Footer } from '../shared/components/footer/footer';
+import { LoggedInHeader } from '../shared/components/logged-in-header/logged-in-header';
+import { VentaService } from '../shared/services/venta-service/venta-service';
+import { ProductService } from '../shared/services/product-service/product-service';
+import { UserService } from '../shared/services/user-service/user-service';
+import { ApiVentaRequest, ApiVentaResponse, DetalleVentaRequest, ShoppingCarItem } from '../shared/models/venta.model';
+import { ApiProductoByIdResponse, Producto } from '../shared/models/producto.model';
+import { VoucherDialog } from '../shared/components/voucher-dialog/voucher-dialog';
+import { AddProductBuyDialog } from '../shared/components/add-product-buy-dialog/add-product-buy-dialog';
 
 
 @Component({
   selector: 'app-shopping-car',
-  imports: [MatTableModule, LoggedInHeader, Footer, MatButtonModule],
+  imports: [MatTableModule,LoggedInHeader, Footer, MatButtonModule],
   templateUrl: './shopping-car.html',
   styleUrl: './shopping-car.css',
 })
