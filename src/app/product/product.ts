@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
@@ -32,7 +32,7 @@ import { ApiProductoResponse } from '../shared/models/producto.model';
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
-export class Product {
+export class Product implements OnInit {
 
   private productService = inject(ProductService);
   private categoryService = inject(CategoryService);

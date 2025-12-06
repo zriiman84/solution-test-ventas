@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { VentaService } from '../../services/venta-service/venta-service';
 import { DialogRef } from '@angular/cdk/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -12,7 +12,8 @@ import { MatTableModule } from '@angular/material/table';
   templateUrl: './voucher-dialog.html',
   styleUrl: './voucher-dialog.css',
 })
-export class VoucherDialog {
+export class VoucherDialog implements OnInit {
+
   private ventaService = inject(VentaService);
   private dialogRef = inject(DialogRef);
   SaleId = inject(MAT_DIALOG_DATA) as number;

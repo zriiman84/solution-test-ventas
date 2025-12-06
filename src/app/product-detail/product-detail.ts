@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { LoggedInHeader } from '../shared/components/logged-in-header/logged-in-header';
 import { Footer } from '../shared/components/footer/footer';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -16,7 +16,7 @@ import { AddProductBuyDialog } from '../shared/components/add-product-buy-dialog
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css',
 })
-export class ProductDetail {
+export class ProductDetail implements OnInit {
 
   producto: Producto | null = null;
   private userService = inject(UserService);

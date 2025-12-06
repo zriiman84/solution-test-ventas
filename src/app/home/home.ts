@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HomeHeader } from './home-header/home-header';
 import { Footer } from '../shared/components/footer/footer';
 import { ProductCard } from '../shared/components/product-card/product-card';
@@ -19,7 +19,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements OnInit {
 
   private homeService : HomeService;
   private productService: ProductService;

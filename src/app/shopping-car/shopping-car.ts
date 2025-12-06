@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   ApiVentaRequest,
   ApiVentaResponse,
@@ -26,7 +26,7 @@ import { ShoppingCarService } from '../shared/services/shopping-car-service/shop
   templateUrl: './shopping-car.html',
   styleUrl: './shopping-car.css',
 })
-export class ShoppingCar {
+export class ShoppingCar implements OnInit {
 
   //Inyecciones
   private ventaService = inject(VentaService);
