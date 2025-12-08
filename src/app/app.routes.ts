@@ -7,9 +7,8 @@ import { ForgotPassword } from './forgot-password/forgot-password';
 import { Admin } from './admin/admin';
 import { Customer } from './customer/customer';
 import { ProductDetail } from './product-detail/product-detail';
-
-import { Product } from './product/product';
 import { ShoppingCar } from './shopping-car/shopping-car';
+import { Product } from './admin/product/product';
 
 export const routes: Routes = [
   {
