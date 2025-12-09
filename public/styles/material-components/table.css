@@ -1,0 +1,8 @@
+:root {
+  --mat-table-header-headline-color: var(--accent-color);
+  --mat-paginator-container-background-color: #78797c;
+  --mat-paginator-container-text-color:whitesmoke;
+  --mat-paginator-disabled-icon-color: var(--secondary-color);
+  --mat-paginator-enabled-icon-color: var(--primary-color);
+  --mat-sort-arrow-color: var(--accent-color);
+}

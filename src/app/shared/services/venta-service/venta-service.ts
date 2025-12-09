@@ -31,7 +31,7 @@ export class VentaService {
     paramList = paramList.append('FechaInicio', dateStart);
     paramList = paramList.append('FechaFin', dateEnd);
     paramList = paramList.append('Page', '1');
-    paramList = paramList.append('PageSize', '10');
+    paramList = paramList.append('PageSize', '100');
 
     //return this.http.get<ApiVentaByFiltersResponse>(this.UrlBase + 'ventas/ListarVentasPorFecha?FechaInicio='+ dateStart + '&FechaFin=' + dateEnd + '&Page=1&PageSize=10');
     return this.http.get<ApiVentaByFiltersResponse>(this.UrlBase + 'ventas/ListarVentasPorFecha', {
@@ -47,7 +47,7 @@ export class VentaService {
     paramList = paramList.append('nombresEmpleado', firstname);
     paramList = paramList.append('apellidosEmpleado', lastname);
     paramList = paramList.append('Page', '1');
-    paramList = paramList.append('PageSize', '10');
+    paramList = paramList.append('PageSize', '100');
 
     return this.http.get<ApiVentaByFiltersResponse>(
       this.UrlBase + 'ventas/ListarVentasPorClienteYEmpleado',
@@ -60,7 +60,7 @@ export class VentaService {
     let paramList = new HttpParams();
 
     paramList = paramList.append('Page', '1');
-    paramList = paramList.append('PageSize', '10');
+    paramList = paramList.append('PageSize', '100');
 
     return this.http.get<ApiVentaByFiltersResponse>(this.UrlBase + 'ventas/ListarMisCompras', {
       params: paramList,

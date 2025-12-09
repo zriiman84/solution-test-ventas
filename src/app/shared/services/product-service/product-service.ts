@@ -27,7 +27,7 @@ export class ProductService {
     let paramList = new HttpParams();
     paramList = paramList.append('nombre', nombre);
     paramList = paramList.append('Page', '1');
-    paramList = paramList.append('PageSize', '10');
+    paramList = paramList.append('PageSize', '100');
 
     return this.http.get<ApiProductoByFilterResponse>(this.UrlBase + 'productos/GetByNombre', {
       params: paramList,
@@ -38,7 +38,7 @@ export class ProductService {
     //Método seguro usando HttpParams
     let paramList = new HttpParams();
     paramList = paramList.append('Page', '1');
-    paramList = paramList.append('PageSize', '10');
+    paramList = paramList.append('PageSize', '100');
 
     return this.http.get<ApiProductoByFilterResponse>(this.UrlBase + 'productos', {
       params: paramList,

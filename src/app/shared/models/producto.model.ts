@@ -32,3 +32,13 @@ export interface ApiProductoResponse{
   ErrorMessage: string | null;
 }
 
+export interface ProductDataTable{
+  Id: number;
+  Nombre: string;
+  Descripcion: string | null;
+  PrecioUnitario: number;
+  Stock: number;
+  CategoriaProducto: string;
+  Status: string;
+}
+

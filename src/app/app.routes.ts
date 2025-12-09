@@ -9,6 +9,11 @@ import { Customer } from './customer/customer';
 import { ProductDetail } from './product-detail/product-detail';
 import { ShoppingCar } from './shopping-car/shopping-car';
 import { Product } from './admin/product/product';
+import { Category } from './admin/category/category';
+import { Sales } from './admin/sales/sales';
+import { RegisterProduct } from './admin/product/register-product/register-product';
+import { ListProduct } from './admin/product/list-product/list-product';
+import { Reports } from './admin/reports/reports';
 
 export const routes: Routes = [
   {
@@ -50,7 +55,47 @@ export const routes: Routes = [
     component: ShoppingCar,
   },
   {
-    path: 'admin/product',
-    component: Product,
-  }
+    path: 'admin',
+    pathMatch: 'prefix',
+    component: Admin,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'sales', //por default redirige a 'sales'
+      },
+      {
+        path: 'sales',
+        component: Sales,
+      },
+      {
+        path: 'category',
+        component: Category,
+      },
+      {
+        path: 'products',
+        pathMatch: 'prefix',
+        component: Product,
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'register-product', //por default redirige a 'sales'
+          },
+          {
+            path: 'register-product',
+            component: RegisterProduct,
+          },
+          {
+            path: 'list-product',
+            component: ListProduct,
+          },
+        ],
+      },
+      {
+        path: 'reports',
+        component: Reports,
+      },
+    ],
+  },
 ];

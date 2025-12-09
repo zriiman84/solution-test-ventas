@@ -1,0 +1,56 @@
+<div class="delete-container">
+  <div class="card">
+    <div class="title-card">
+      <span>ELIMINAR PRODUCTO</span>
+    </div>
+    <form #productForm="ngForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" [value]="data.Nombre" readonly />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <input matInput type="text" [value]="data.Descripcion" readonly />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Detalle</mat-label>
+        <textarea matInput [value]="data.DescripcionExtensa" readonly></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" [value]="data.PrecioUnitario.toFixed(2)" readonly />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" [value]="data.Stock" readonly />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Categoría</mat-label>
+        <input matInput type="text" [value]="data.NombreCategoriaProducto" readonly />
+      </mat-form-field>
+      <!-- Imagen (input file) -->
+      <div class="image-section">
+        <div class="image-preview-container">
+          @if(imageUrl!=='*'){
+          <img [src]="imageUrl" alt="Vista Previa de Imagen" class="image-preview" />
+          }
+        </div>
+        <div class="file-controls-group">
+          <span class="file-name-display">{{ fileName }}</span>
+          <!--Input file real (oculto)-->
+          <input id="file-upload" type="file" accept=".jpg,.jpeg,.png" />
+        </div>
+      </div>
+      <!---->
+      <div class="botones">
+        <button mat-flat-button type="button" class="delete" (click)="deleteProduct()">
+          ELIMINAR
+        </button>
+        <button mat-flat-button type="button" class="close" (click)="cerrarVentana()">
+          CERRAR
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
