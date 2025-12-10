@@ -14,6 +14,8 @@ import { Sales } from './admin/sales/sales';
 import { RegisterProduct } from './admin/product/register-product/register-product';
 import { ListProduct } from './admin/product/list-product/list-product';
 import { Reports } from './admin/reports/reports';
+import { RegisterCategory } from './admin/category/register-category/register-category';
+import { ListCategory } from './admin/category/list-category/list-category';
 
 export const routes: Routes = [
   {
@@ -70,7 +72,23 @@ export const routes: Routes = [
       },
       {
         path: 'category',
+        pathMatch: 'prefix',
         component: Category,
+         children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'register-category', //por default redirige a 'register-category'
+          },
+          {
+            path: 'register-category',
+            component: RegisterCategory,
+          },
+          {
+            path: 'list-category',
+            component: ListCategory,
+          },
+        ],
       },
       {
         path: 'products',
@@ -80,7 +98,7 @@ export const routes: Routes = [
           {
             path: '',
             pathMatch: 'full',
-            redirectTo: 'register-product', //por default redirige a 'sales'
+            redirectTo: 'register-product', //por default redirige a 'register-product'
           },
           {
             path: 'register-product',

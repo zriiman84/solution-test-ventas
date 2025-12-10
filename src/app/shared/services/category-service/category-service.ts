@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import {
   ApiCategoriaByFilterResponse,
   ApiCategoriaByIdResponse,
+  ApiCategoriaProductoRequest,
   ApiCategoriaResponse,
 } from '../../models/categoria.model';
 import { BaseResponse } from '../../models/generic.model';
@@ -30,21 +31,15 @@ export class CategoryService {
     });
   }
 
-  addCategory(nombre: string, descripcion: string | null) {
-    return this.http.post<ApiCategoriaResponse>(this.UrlBase + 'categorias', {
-      Nombre: nombre,
-      Descripcion: descripcion ?? '',
-    });
+  addCategory(categoryRequest: ApiCategoriaProductoRequest) {
+    return this.http.post<ApiCategoriaResponse>(this.UrlBase + 'categorias', categoryRequest);
   }
 
-  updateProduct(id: string, nombre: string, descripcion: string | null) {
-    return this.http.post<ApiCategoriaResponse>(this.UrlBase + 'categorias/' + id, {
-      Nombre: nombre,
-      Descripcion: descripcion ?? '',
-    });
+  updateCategory(id: string, categoryRequest: ApiCategoriaProductoRequest) {
+    return this.http.put<ApiCategoriaResponse>(this.UrlBase + 'categorias/' + id, categoryRequest);
   }
 
-  deleteProduct(id: string) {
+  deleteCategory(id: string) {
     return this.http.delete<BaseResponse>(this.UrlBase + 'categorias/' + id);
   }
 }

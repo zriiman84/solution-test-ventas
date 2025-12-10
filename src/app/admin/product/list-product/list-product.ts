@@ -56,10 +56,10 @@ export class ListProduct implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit() {
-    this.cargarDataInicial();
+    this.cargarData();
   }
 
-  cargarDataInicial() {
+  cargarData() {
     this.productoService.getProducts().subscribe((resp: ApiProductoByFilterResponse) => {
       this.listaProductos = resp.Data ?? []; //Cargo los productos
 
@@ -78,6 +78,11 @@ export class ListProduct implements OnInit, AfterViewInit {
       });
 
       this.dataSource.data = this.listaProductosTable;
+
+      //¡Importante! Resetear el Paginator a la primera página
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
     });
   }
 
@@ -90,30 +95,42 @@ export class ListProduct implements OnInit, AfterViewInit {
     const filterValue = (input.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    //Resetear el Paginator a la primera página
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
 
   eliminar(id: number) {
-    const producto: Producto | null = this.listaProductos.find((p) => p.Id === id) ?? null;
+    const producto : Producto | null = this.listaProductos.find(p => p.Id === id) ?? null;
 
     if (!producto) return;
 
-    this.matDialog.open(DeleteProductDialog, {
+    const modal = this.matDialog.open(DeleteProductDialog, {
       data: producto,
       disableClose: true,
+    });
+
+    modal.afterClosed().subscribe(() => {
+      //Vuelvo a consultar la data desde BD
+      this.cargarData();
     });
   }
 
   editar(id: number) {
-    const producto: Producto | null = this.listaProductos.find((p) => p.Id === id) ?? null;
+
+    const producto : Producto | null = this.listaProductos.find(p => p.Id === id) ?? null;
 
     if (!producto) return;
 
-    this.matDialog.open(EditProductDialog, {
+    const modal = this.matDialog.open(EditProductDialog, {
       data: producto,
       disableClose: true,
+    });
+
+    modal.afterClosed().subscribe(() => {
+      //Vuelvo a consultar la data desde BD
+      this.cargarData();
     });
   }
 

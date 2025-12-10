@@ -1,0 +1,45 @@
+<div class="register-container">
+  <div class="card">
+    <div class="title-card">
+      <span>ACTUALIZAR CATEGORÍA</span>
+    </div>
+    <form [formGroup]="categoryForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" formControlName="name" />
+        @if(categoryForm.controls['name'].hasError("required")){
+        <mat-error>El campo es obligatorio</mat-error>
+        } @if(categoryForm.controls['name'].hasError("maxlength")){
+        <mat-error>El campo debe tener máximo 100 caracteres </mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <input matInput type="text" formControlName="description" />
+        @if(categoryForm.controls['description'].hasError("maxlength")){
+        <mat-error>El campo debe tener máximo 200 caracteres </mat-error>
+        }
+      </mat-form-field>
+      <div class="botones">
+        <button
+        mat-flat-button
+        type="button"
+        class="primary"
+        (click)="editCategory()"
+        [disabled]="categoryForm.invalid"
+      >
+        ACTUALIZAR
+      </button>
+      <button
+        mat-flat-button
+        type="button"
+        class = "close"
+        (click)="cerrarVentana()"
+      >
+        CERRAR
+      </button>
+      </div>
+    </form>
+  </div>
+</div>
+

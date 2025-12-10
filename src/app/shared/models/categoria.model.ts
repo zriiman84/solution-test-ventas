@@ -25,3 +25,15 @@ export interface ApiCategoriaResponse{
   Message: string | null;
   ErrorMessage: string | null;
 }
+
+export interface ApiCategoriaProductoRequest{
+  Nombre: string;
+  Descripcion: string | null;
+}
+
+export interface CategoriaDataTable{
+  Id: number;
+  Nombre: string;
+  Descripcion: string | null;
+  Status: string;
+}

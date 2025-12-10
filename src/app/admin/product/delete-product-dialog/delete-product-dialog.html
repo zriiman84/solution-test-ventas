@@ -6,27 +6,27 @@
     <form #productForm="ngForm">
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
-        <input matInput type="text" [value]="data.Nombre" readonly />
+        <input matInput type="text" [value]="data.Nombre" disabled />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Descripción</mat-label>
-        <input matInput type="text" [value]="data.Descripcion" readonly />
+        <input matInput type="text" [value]="data.Descripcion" disabled />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Detalle</mat-label>
-        <textarea matInput [value]="data.DescripcionExtensa" readonly></textarea>
+        <textarea matInput [value]="data.DescripcionExtensa" disabled></textarea>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Precio</mat-label>
-        <input matInput type="number" [value]="data.PrecioUnitario.toFixed(2)" readonly />
+        <input matInput type="number" [value]="data.PrecioUnitario.toFixed(2)" disabled />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Stock</mat-label>
-        <input matInput type="number" [value]="data.Stock" readonly />
+        <input matInput type="number" [value]="data.Stock" disabled />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Categoría</mat-label>
-        <input matInput type="text" [value]="data.NombreCategoriaProducto" readonly />
+        <input matInput type="text" [value]="data.NombreCategoriaProducto" disabled />
       </mat-form-field>
       <!-- Imagen (input file) -->
       <div class="image-section">

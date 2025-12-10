@@ -1,0 +1,64 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-height: 560px;
+  & .card {
+    max-height: inherit;
+    padding-right: 5px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    width: 420px;
+    border-color: var(--primary-color);
+    box-shadow: rgba(255, 160, 0, 1) 0px 0px 6px;
+    gap: 10px;
+    & .title-card {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      & span {
+        color: var(--primary-color);
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+    & form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      & .mat-mdc-option,
+      .mat-mdc-form-field {
+        font-size: 14px !important;
+      }
+      & input.mat-mdc-input-element,
+      textarea.mat-mdc-input-element {
+        font-size: 14px !important;
+      }
+      .mat-mdc-form-field {
+        width: 300px !important;
+      }
+      & .botones {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        & button {
+          margin-top: 10px;
+          margin-bottom: 30px;
+          width: 150px;
+        }
+
+        & .reset{
+          background-color: var(--accent-color);
+          color: white;
+        }
+      }
+    }
+  }
+}
