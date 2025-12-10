@@ -14,7 +14,7 @@
         <form [formGroup]="loginForm">
           <mat-form-field appearance="outline">
             <mat-label>Usuario o email</mat-label>
-            <input type="text" matInput formControlName="usuario_email"/>
+            <input type="text" matInput formControlName="usuario_email" autocomplete="email"/>
             @if(loginForm.controls['usuario_email'].hasError("required")){
               <mat-error>El campo es obligatorio </mat-error>
             }
@@ -27,7 +27,7 @@
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Contraseña</mat-label>
-            <input type="password" matInput formControlName="password"/>
+            <input type="password" matInput formControlName="password" autocomplete="current-password"/>
             @if(loginForm.controls['password'].hasError("required")){
               <mat-error>El password es obligatorio </mat-error>
             }

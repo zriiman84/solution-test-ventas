@@ -82,4 +82,23 @@ export class Register {
       this.router.navigateByUrl('/login');
     });
   }
+
+   resetFormulario(){
+    //1. Resetear el formulario con valores iniciales del NgOnInit
+    this.registerUserForm.reset();
+
+    //2. Recorrer cada control y marcarlo como "no tocado" (Untouched)
+    //Esto remueve las clases CSS de error de Angular y oculta los mat-error.
+    Object.keys(this.registerUserForm.controls).forEach(key => {
+        const control = this.registerUserForm.get(key);
+        if (control) {
+            control.markAsUntouched();
+            control.markAsPristine();
+        }
+    });
+
+    //3. Marcar el FormGroup completo como no tocado
+    this.registerUserForm.markAsUntouched();
+    this.registerUserForm.markAsPristine();
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MatAnchor, MatButton, MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,7 +29,7 @@ import { DeleteCategoryDialog } from '../delete-category-dialog/delete-category-
   templateUrl: './list-category.html',
   styleUrl: './list-category.css',
 })
-export class ListCategory implements OnInit {
+export class ListCategory implements OnInit, AfterViewInit {
   //Inyecciones
   private categoryService = inject(CategoryService);
 

@@ -61,3 +61,12 @@ export interface ShoppingCarItem {
   SubTotal: number;
   CategoriaProducto: string;
 }
+
+export interface VentaDataTable {
+  IdVenta: number;
+  NumeroOperacion: string;
+  FechaVenta: string;
+  HoraVenta: string;
+  MontoTotalVenta: number;
+  CantidadTotalArticulos: number;
+}

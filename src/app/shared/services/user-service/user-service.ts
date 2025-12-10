@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ApiLoginResponse, ApiRegisterUserRequest, ApiRegisterUserResponse, ApiResetPasswordRequest } from '../../models/usuario.model';
+import { ApiChangePasswordRequest, ApiLoginResponse, ApiRegisterUserRequest, ApiRegisterUserResponse, ApiResetPasswordRequest } from '../../models/usuario.model';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { BaseResponse } from '../../models/generic.model';
@@ -112,6 +112,10 @@ export class UserService {
 
   ResetPassword(resetPasswordData : ApiResetPasswordRequest){
     return this.http.post<BaseResponse>(this.UrlBase + '/users/ResetPassword', resetPasswordData);
+  }
+
+  changePassword(changePasswordData : ApiChangePasswordRequest){
+    return this.http.post<BaseResponse>(this.UrlBase + '/users/ChangePassword', changePasswordData);
   }
 
 

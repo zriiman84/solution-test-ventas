@@ -25,12 +25,15 @@
       align-items: center;
       margin-top: 20px;
       margin-bottom: 30px;
+      height: 600px;
       & .card {
         background-color: var(--secondary-color);
         border-radius: 8px;
-        width: 300px;
+        width: 400px;
+        height: inherit;
         box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 4px;
         gap: 10px;
+        overflow-y: auto;
         & .title-card {
           display: flex;
           justify-content: center;
@@ -47,10 +50,35 @@
           flex-direction: column;
           align-items: center;
           gap: 15px;
-          & button {
-          margin-top: 10px;
-          width: 210px;
-        }
+          & .mat-mdc-option,
+          .mat-mdc-form-field {
+            font-size: 14px !important;
+          }
+          & mat-select {
+            font-size: 14px !important;
+          }
+          & input.mat-mdc-input-element,
+          textarea.mat-mdc-input-element {
+            font-size: 14px !important;
+          }
+          .mat-mdc-form-field {
+            width: 300px !important;
+          }
+          & .botones {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            & button {
+              margin-top: 10px;
+              margin-bottom: 30px;
+              width: 150px;
+            }
+            & .reset{
+              background-color: var(--accent-color);
+              color:white;
+            }
+          }
         }
         & .login-card {
           display: flex;

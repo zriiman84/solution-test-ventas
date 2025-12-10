@@ -9,13 +9,15 @@ import { Customer } from './customer/customer';
 import { ProductDetail } from './product-detail/product-detail';
 import { ShoppingCar } from './shopping-car/shopping-car';
 import { Product } from './admin/product/product';
-import { Category } from './admin/category/category';
 import { Sales } from './admin/sales/sales';
+import { Category } from './admin/category/category';
+import { Reports } from './admin/reports/reports';
 import { RegisterProduct } from './admin/product/register-product/register-product';
 import { ListProduct } from './admin/product/list-product/list-product';
-import { Reports } from './admin/reports/reports';
 import { RegisterCategory } from './admin/category/register-category/register-category';
 import { ListCategory } from './admin/category/list-category/list-category';
+import { MyPurchases } from './customer/my-purchases/my-purchases';
+import { ChangePassword } from './customer/change-password/change-password';
 
 export const routes: Routes = [
   {
@@ -35,23 +37,36 @@ export const routes: Routes = [
     component: ForgotPassword,
   },
   {
-    path: 'admin',
-    component: Admin,
-  },
-  {
     path: 'customer',
+    pathMatch: 'prefix',
     component: Customer,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'my-purchases', //por default redirige a 'my-purchases'
+      },
+      {
+        path: 'my-purchases',
+        component: MyPurchases,
+      },
+      {
+        path: 'change-password',
+        component: ChangePassword,
+      },
+    ]
   },
   {
     path: 'product-detail',
     pathMatch: 'full',
     redirectTo: '', //Redirigir a home si no se proporciona un id de producto en la ruta
   },
-   {
+  {
     path: 'product-detail/:id',
     pathMatch: 'full',
     component: ProductDetail,
   },
+
   {
     path: 'shopping-car',
     component: ShoppingCar,

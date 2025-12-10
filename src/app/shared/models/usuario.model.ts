@@ -39,3 +39,8 @@ export interface ApiResetPasswordRequest{
     NewPassword: string;
     ConfirmNewPassword: string;
 }
+
+export interface ApiChangePasswordRequest{
+    OldPassword: string;
+    NewPassword: string;
+}
