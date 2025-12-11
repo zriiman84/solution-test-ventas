@@ -1,3 +1,6 @@
 @import './material-components/button.css';
 @import './material-components/outlined.css';
 @import './material-components/select.css';
+@import './material-components/table.css';
+@import './material-components/checkbox.css';
+@import './material-components/date-picker.css';

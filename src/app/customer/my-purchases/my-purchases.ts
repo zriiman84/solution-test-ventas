@@ -62,6 +62,7 @@ export class MyPurchases implements OnInit, AfterViewInit {
         return {
           IdVenta: itemVenta.IdVenta,
           NumeroOperacion: itemVenta.NumeroOperacion,
+          NombreCompletoCliente: itemVenta.NombreCompletoCliente,
           FechaVenta: itemVenta.FechaVenta,
           HoraVenta: itemVenta.HoraVenta,
           MontoTotalVenta: itemVenta.MontoTotalVenta,

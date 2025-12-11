@@ -65,6 +65,7 @@ export interface ShoppingCarItem {
 export interface VentaDataTable {
   IdVenta: number;
   NumeroOperacion: string;
+  NombreCompletoCliente: string;
   FechaVenta: string;
   HoraVenta: string;
   MontoTotalVenta: number;
