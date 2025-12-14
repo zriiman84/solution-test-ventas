@@ -28,6 +28,13 @@ export class AddProductBuyDialog {
 
   addProductToShoppingCar(cantidad: number){
 
+    //Validar stock
+     if(cantidad > this.data.Stock){
+      alert('La cantidad solicitada del producto es mayor al stock disponible.');
+      this.dialogRef.close();
+      return;
+    }
+
     //Agregar el producto en memoria persistente
     this.carService.addItem({
       ProductoId: this.data.Id,

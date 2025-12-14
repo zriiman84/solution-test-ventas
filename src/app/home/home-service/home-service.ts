@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  private UrlBase : string =  'http://localhost:7060/api/';
+  private UrlBase : string =  'http://localhost:5065/api/';
   private http = inject(HttpClient);
 
   getHomeData(): Observable<ApiHomeResponse> {

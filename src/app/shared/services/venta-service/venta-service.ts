@@ -3,6 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import {
   ApiVentaByFiltersResponse,
   ApiVentaByIdResponse,
+  ApiVentaReporteClienteResponse,
+  ApiVentaReporteProductoResponse,
   ApiVentaRequest,
   ApiVentaResponse,
 } from '../../models/venta.model';
@@ -11,7 +13,7 @@ import {
   providedIn: 'root',
 })
 export class VentaService {
-  private UrlBase: string = 'http://localhost:7060/api/';
+  private UrlBase: string = 'http://localhost:5065/api/';
   private http = inject(HttpClient);
 
 
@@ -65,5 +67,45 @@ export class VentaService {
     return this.http.get<ApiVentaByFiltersResponse>(this.UrlBase + 'ventas/ListarMisCompras', {
       params: paramList,
     });
+  }
+
+  getSales(flagPagination: boolean) {
+
+    let paramList = new HttpParams();
+
+    paramList = paramList.append('flagPagination', flagPagination);
+    paramList = paramList.append('Page', '1');
+    paramList = paramList.append('PageSize', '100');
+
+    return this.http.get<ApiVentaByFiltersResponse>(
+      this.UrlBase + 'ventas/ListarVentas',
+      { params: paramList }
+    );
+  }
+
+  GetSaleReportByClient(dateStart: string, dateEnd: string) {
+
+    let paramList = new HttpParams();
+
+    paramList = paramList.append('fechaInicio', dateStart);
+    paramList = paramList.append('fechaFin', dateEnd);
+
+    return this.http.get<ApiVentaReporteClienteResponse>(
+      this.UrlBase + 'Reports/VentasCliente',
+      { params: paramList }
+    );
+  }
+
+  GetSaleReportByProduct(dateStart: string, dateEnd: string) {
+
+    let paramList = new HttpParams();
+
+    paramList = paramList.append('fechaInicio', dateStart);
+    paramList = paramList.append('fechaFin', dateEnd);
+
+    return this.http.get<ApiVentaReporteProductoResponse>(
+      this.UrlBase + 'Reports/VentasProducto',
+      { params: paramList }
+    );
   }
 }

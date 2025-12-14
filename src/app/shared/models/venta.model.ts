@@ -71,3 +71,30 @@ export interface VentaDataTable {
   MontoTotalVenta: number;
   CantidadTotalArticulos: number;
 }
+
+export interface VentaReporteCliente {
+  EmailCliente: string;
+  NombreCliente: string;
+  CantidadTotalArticulos: number;
+  MontoTotalVenta: number;
+}
+
+export interface ApiVentaReporteClienteResponse {
+  Data: VentaReporteCliente[] | null;
+  Sucess: boolean;
+  Message: string | null;
+  ErrorMessage: string | null;
+}
+
+export interface VentaReporteProducto {
+  IdProducto: number;
+  NombreProducto: string;
+  CantidadTotalArticulos: number;
+  MontoTotalProducto: number;
+}
+export interface ApiVentaReporteProductoResponse {
+  Data: VentaReporteProducto[] | null;
+  Sucess: boolean;
+  Message: string | null;
+  ErrorMessage: string | null;
+}

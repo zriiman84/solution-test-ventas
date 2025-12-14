@@ -63,6 +63,8 @@
             <mat-error>El campo es obligatorio </mat-error>
             } @if(registerUserForm.controls['email'].hasError("email")){
             <mat-error>Ingrese un email válido</mat-error>
+            } @if(registerUserForm.controls['email'].hasError("maxlength")){
+            <mat-error>El email admite máximo 100 caracteres</mat-error>
             }
           </mat-form-field>
           <mat-form-field appearance="outline">

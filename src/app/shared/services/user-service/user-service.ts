@@ -10,7 +10,7 @@ import { VentaService } from '../venta-service/venta-service';
   providedIn: 'root',
 })
 export class UserService {
-  private UrlBase: string = 'http://localhost:7060/api/';
+  private UrlBase: string = 'http://localhost:5065/api/';
   private http = inject(HttpClient);
   private ventaService = inject(VentaService);
 

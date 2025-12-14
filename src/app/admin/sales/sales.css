@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   & .filters {
-    width: 950px;
+    width: 1000px;
     margin: 30px;
     & .form {
       display: flex;
@@ -34,7 +34,7 @@
     }
   }
   & .table {
-    width: 950px;
+    width: 1000px;
     margin-bottom: 30px;
     & .empty-table {
       width: 100%;

@@ -53,7 +53,7 @@ export class Register {
       Validators.maxLength(20),
       Validators.pattern(this.regexUser),
     ]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(100)]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
@@ -65,16 +65,21 @@ export class Register {
 
   registerUser() {
     const userData: ApiRegisterUserRequest = {
-      FirstName: this.registerUserForm.controls['firstname'].value!,
-      LastName: this.registerUserForm.controls['lastname'].value!,
+      FirstName: this.registerUserForm.controls['firstname'].value!.trim() ,
+      LastName: this.registerUserForm.controls['lastname'].value!.trim(),
       Age: this.registerUserForm.controls['age'].value!,
-      UserName: this.registerUserForm.controls['username'].value!,
-      Email: this.registerUserForm.controls['email'].value!,
+      UserName: this.registerUserForm.controls['username'].value!.trim(),
+      Email: this.registerUserForm.controls['email'].value!.trim(),
       Password: this.registerUserForm.controls['password'].value!,
       ConfirmPassword: this.registerUserForm.controls['password'].value!, //por simplicidad, se envía la misma contraseña
       DocumentType: parseInt(this.registerUserForm.controls['documenttype'].value!),
-      DocumentNumber: this.registerUserForm.controls['documentnumber'].value!,
+      DocumentNumber: this.registerUserForm.controls['documentnumber'].value!.trim(),
     };
+
+    if(userData.UserName.trim().toLowerCase() === userData.Email.trim().toLowerCase()){
+      alert('El campo Usuario e Email no pueden ser iguales.');
+      return;
+    }
 
     //Ejecutar el método registerUser del UserService
     this.userService.registerUser(userData).subscribe((resp: ApiRegisterUserResponse) => {

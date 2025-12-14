@@ -12,7 +12,7 @@ import { BaseResponse } from '../../models/generic.model';
   providedIn: 'root',
 })
 export class CategoryService {
-  private UrlBase: string = 'http://localhost:7060/api/';
+  private UrlBase: string = 'http://localhost:5065/api/';
   private http = inject(HttpClient);
 
   getCategoryById(id: string) {

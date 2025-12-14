@@ -12,6 +12,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { AdaptadorPersonalizadoFechas, to2digit } from '../../shared/adapters/adaptador-fechas';
 import { VentaService } from '../../shared/services/venta-service/venta-service';
 import { ApiVentaByFiltersResponse, Venta, VentaDataTable } from '../../shared/models/venta.model';
+import { MatDialog } from '@angular/material/dialog';
+import { VoucherDialog } from '../../shared/components/voucher-dialog/voucher-dialog';
 
 const MY_DATE_FORMATS = {
   display: {},
@@ -51,6 +53,8 @@ export class Sales implements OnInit, AfterViewInit {
   private listaVentasTableInicial: VentaDataTable[] = [];
   flagCargaVentas = false;
 
+  private matDialog = inject(MatDialog);
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -62,7 +66,8 @@ export class Sales implements OnInit, AfterViewInit {
     'FechaVenta',
     'HoraVenta',
     'MontoTotal',
-    'CantidadTotal'
+    'CantidadTotal',
+     'Voucher'
   ];
 
   //Form
@@ -154,7 +159,7 @@ export class Sales implements OnInit, AfterViewInit {
       return;
     };
 
-    this.dataSource.data = this.listaVentasTableInicial.filter(p => p.NombreCompletoCliente.toLowerCase().includes(filterValue.trim().toLowerCase()));
+    this.dataSource.data = this.listaVentasTableInicial.filter(p => p.NombreCompletoCliente.trim().toLowerCase().includes(filterValue.trim().toLowerCase()));
     this.setFisrtPage();
   }
 
@@ -207,7 +212,14 @@ export class Sales implements OnInit, AfterViewInit {
     return dateFormat;
   }
 
+  //Abrir el modal para el voucher
+  viewVoucher(idVenta: number) {
 
+    this.matDialog.open(VoucherDialog, {
+      data: idVenta,
+      disableClose: true,
+    });
+  }
 
 
 }

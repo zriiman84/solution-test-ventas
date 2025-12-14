@@ -61,6 +61,7 @@ export class Login {
     usuario_email: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
+      Validators.maxLength(100),
       this.emailOrUserValidator,  //validar que sea email o username
     ]),
     password: new FormControl('', [
