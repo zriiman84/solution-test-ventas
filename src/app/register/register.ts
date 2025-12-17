@@ -83,7 +83,7 @@ export class Register {
 
     //Ejecutar el método registerUser del UserService
     this.userService.registerUser(userData).subscribe((resp: ApiRegisterUserResponse) => {
-      alert('¡Registro de usuario exitoso! - Id usuario: ' + resp.Data.UserId);
+      alert('¡Registro de usuario exitoso!');
       this.router.navigateByUrl('/login');
     });
   }

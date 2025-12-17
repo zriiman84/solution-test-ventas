@@ -10,9 +10,8 @@ import { VentaService } from '../venta-service/venta-service';
   providedIn: 'root',
 })
 export class UserService {
-  private UrlBase: string = 'http://localhost:5065/api/';
+  private UrlBase: string = 'http://localhost:5128/api/';
   private http = inject(HttpClient);
-  private ventaService = inject(VentaService);
 
   //Definiendo variables
   private tokenExpiration = new Date();
@@ -20,6 +19,7 @@ export class UserService {
   private role: string = '';
   private email = '';
   private name = '';
+  private userName = '';
   private isLoggedIn = false;
   private router = inject(Router);
 
@@ -35,6 +35,10 @@ export class UserService {
     return this.name;
   }
 
+  getUserName(){
+    return this.userName;
+  }
+
   getTokenExpiration() {
     return this.tokenExpiration;
   }
@@ -44,7 +48,7 @@ export class UserService {
   }
 
   Login(usuario: string, password: string) {
-    return this.http.post<ApiLoginResponse>(this.UrlBase + '/users/Login', {
+    return this.http.post<ApiLoginResponse>(this.UrlBase + '/Users/Login', {
       UserName: usuario,
       Password: password,
     });
@@ -68,7 +72,8 @@ export class UserService {
     //Obtener los valores de los CLAIMS provenientes del TOKEN
     this.role = tokenDecoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
     this.email = tokenDecoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'];
-    this.name = tokenDecoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+    this.name = tokenDecoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'];
+    this.userName = tokenDecoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
 
     this.isLoggedIn = true; //el usuario está logueado
   }
@@ -85,6 +90,7 @@ export class UserService {
     this.role = '';
     this.email = '';
     this.name = '';
+    this.userName = ''
     this.tokenExpiration = new Date();
     this.isLoggedIn = false;
 
@@ -100,22 +106,22 @@ export class UserService {
   }
 
   registerUser(userData : ApiRegisterUserRequest){
-    return this.http.post<ApiRegisterUserResponse>(this.UrlBase + '/users/RegistrarUsuario', userData);
+    return this.http.post<ApiRegisterUserResponse>(this.UrlBase + '/Users/RegistrarUsuario', userData);
   }
 
   requestTokenToResetPassword(paramEmail : string){
-    return this.http.post<BaseResponse>(this.UrlBase + '/users/RequestTokenToResetPassword',
+    return this.http.post<BaseResponse>(this.UrlBase + '/Users/RequestTokenToResetPassword',
       {
         email : paramEmail
       });
   }
 
   ResetPassword(resetPasswordData : ApiResetPasswordRequest){
-    return this.http.post<BaseResponse>(this.UrlBase + '/users/ResetPassword', resetPasswordData);
+    return this.http.post<BaseResponse>(this.UrlBase + '/Users/ResetPassword', resetPasswordData);
   }
 
   changePassword(changePasswordData : ApiChangePasswordRequest){
-    return this.http.post<BaseResponse>(this.UrlBase + '/users/ChangePassword', changePasswordData);
+    return this.http.post<BaseResponse>(this.UrlBase + '/Users/ChangePassword', changePasswordData);
   }
 
 

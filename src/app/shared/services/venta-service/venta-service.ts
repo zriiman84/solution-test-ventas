@@ -13,17 +13,17 @@ import {
   providedIn: 'root',
 })
 export class VentaService {
-  private UrlBase: string = 'http://localhost:5065/api/';
+  private UrlBase: string = 'http://localhost:5128/api/';
   private http = inject(HttpClient);
 
 
 
   buyProducts(ventaRequest: ApiVentaRequest) {
-    return this.http.post<ApiVentaResponse>(this.UrlBase + 'ventas', ventaRequest);
+    return this.http.post<ApiVentaResponse>(this.UrlBase + 'Ventas', ventaRequest);
   }
 
   getSaleById(id: string) {
-    return this.http.get<ApiVentaByIdResponse>(this.UrlBase + 'ventas/' + id);
+    return this.http.get<ApiVentaByIdResponse>(this.UrlBase + 'Ventas/' + id);
   }
 
   getSalesByDate(dateStart: string, dateEnd: string) {
@@ -36,7 +36,7 @@ export class VentaService {
     paramList = paramList.append('PageSize', '100');
 
     //return this.http.get<ApiVentaByFiltersResponse>(this.UrlBase + 'ventas/ListarVentasPorFecha?FechaInicio='+ dateStart + '&FechaFin=' + dateEnd + '&Page=1&PageSize=10');
-    return this.http.get<ApiVentaByFiltersResponse>(this.UrlBase + 'ventas/ListarVentasPorFecha', {
+    return this.http.get<ApiVentaByFiltersResponse>(this.UrlBase + 'Ventas/ListarVentasPorFecha', {
       params: paramList,
     });
   }
@@ -52,7 +52,7 @@ export class VentaService {
     paramList = paramList.append('PageSize', '100');
 
     return this.http.get<ApiVentaByFiltersResponse>(
-      this.UrlBase + 'ventas/ListarVentasPorClienteYEmpleado',
+      this.UrlBase + 'Ventas/ListarVentasPorClienteYEmpleado',
       { params: paramList }
     );
   }
@@ -64,7 +64,7 @@ export class VentaService {
     paramList = paramList.append('Page', '1');
     paramList = paramList.append('PageSize', '100');
 
-    return this.http.get<ApiVentaByFiltersResponse>(this.UrlBase + 'ventas/ListarMisCompras', {
+    return this.http.get<ApiVentaByFiltersResponse>(this.UrlBase + 'Ventas/ListarMisCompras', {
       params: paramList,
     });
   }
@@ -78,7 +78,7 @@ export class VentaService {
     paramList = paramList.append('PageSize', '100');
 
     return this.http.get<ApiVentaByFiltersResponse>(
-      this.UrlBase + 'ventas/ListarVentas',
+      this.UrlBase + 'Ventas/ListarVentas',
       { params: paramList }
     );
   }

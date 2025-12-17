@@ -60,7 +60,7 @@ export class ListProduct implements OnInit, AfterViewInit {
   }
 
   cargarData() {
-    this.productoService.getProducts().subscribe((resp: ApiProductoByFilterResponse) => {
+    this.productoService.getProductByName('').subscribe((resp: ApiProductoByFilterResponse) => {
       this.listaProductos = resp.Data ?? []; //Cargo los productos
 
       if (!this.listaProductos) return;

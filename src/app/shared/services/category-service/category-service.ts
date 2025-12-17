@@ -12,11 +12,11 @@ import { BaseResponse } from '../../models/generic.model';
   providedIn: 'root',
 })
 export class CategoryService {
-  private UrlBase: string = 'http://localhost:5065/api/';
+  private UrlBase: string = 'http://localhost:5128/api/';
   private http = inject(HttpClient);
 
   getCategoryById(id: string) {
-    return this.http.get<ApiCategoriaByIdResponse>(this.UrlBase + 'categorias/' + id);
+    return this.http.get<ApiCategoriaByIdResponse>(this.UrlBase + 'Categorias/' + id);
   }
 
   getCategory(nombre: string | null) {
@@ -26,20 +26,20 @@ export class CategoryService {
     let paramList = new HttpParams();
     paramList = paramList.append('nombre', nombre ?? '');
 
-    return this.http.get<ApiCategoriaByFilterResponse>(this.UrlBase + 'categorias/GetByNombre', {
+    return this.http.get<ApiCategoriaByFilterResponse>(this.UrlBase + 'Categorias/GetByNombre', {
       params: paramList,
     });
   }
 
   addCategory(categoryRequest: ApiCategoriaProductoRequest) {
-    return this.http.post<ApiCategoriaResponse>(this.UrlBase + 'categorias', categoryRequest);
+    return this.http.post<ApiCategoriaResponse>(this.UrlBase + 'Categorias', categoryRequest);
   }
 
   updateCategory(id: string, categoryRequest: ApiCategoriaProductoRequest) {
-    return this.http.put<ApiCategoriaResponse>(this.UrlBase + 'categorias/' + id, categoryRequest);
+    return this.http.put<ApiCategoriaResponse>(this.UrlBase + 'Categorias/' + id, categoryRequest);
   }
 
   deleteCategory(id: string) {
-    return this.http.delete<BaseResponse>(this.UrlBase + 'categorias/' + id);
+    return this.http.delete<BaseResponse>(this.UrlBase + 'Categorias/' + id);
   }
 }

@@ -34,13 +34,13 @@ export class ShoppingCarService {
   }
 
   save() {
-    const user = this.userService.getEmail().split('@')[0];
+    const user = this.userService.getUserName();
     const KEY_LS = "car_" + user;
-    localStorage.setItem(KEY_LS, JSON.stringify(this.carrito));
+    localStorage.setItem(KEY_LS, JSON.stringify(this.carrito)); //almaceno el carrito de compras
   }
 
   getCartFromStorage() {
-    const user = this.userService.getEmail().split('@')[0];
+    const user = this.userService.getUserName();
     const KEY_LS = "car_" + user;
     const data = localStorage.getItem(KEY_LS);
     return data ? JSON.parse(data) : []; //obtengo el carrito de compras
@@ -52,9 +52,9 @@ export class ShoppingCarService {
 
   resetCar(){
     this.carrito.length = 0;
-    const user = this.userService.getEmail().split('@')[0];
+    const user = this.userService.getUserName();
     const KEY_LS = "car_" + user;
-    localStorage.removeItem(KEY_LS);
+    const data = localStorage.removeItem(KEY_LS);
   }
 
 }

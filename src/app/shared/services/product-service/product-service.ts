@@ -12,11 +12,11 @@ import { BaseResponse } from '../../models/generic.model';
   providedIn: 'root',
 })
 export class ProductService {
-  private UrlBase: string = 'http://localhost:5065/api/';
+  private UrlBase: string = 'http://localhost:5128/api/';
   private http = inject(HttpClient);
 
   getProductById(id: string) {
-    return this.http.get<ApiProductoByIdResponse>(this.UrlBase + 'productos/' + id);
+    return this.http.get<ApiProductoByIdResponse>(this.UrlBase + 'Productos/' + id);
   }
 
   getProductByName(nombre: string) {
@@ -25,22 +25,11 @@ export class ProductService {
 
     //Método seguro usando HttpParams
     let paramList = new HttpParams();
-    paramList = paramList.append('nombre', nombre);
+    paramList = paramList.append('nombre', nombre?.trim());
     paramList = paramList.append('Page', '1');
     paramList = paramList.append('PageSize', '100');
 
-    return this.http.get<ApiProductoByFilterResponse>(this.UrlBase + 'productos/GetByNombre', {
-      params: paramList,
-    });
-  }
-
-  getProducts() {
-    //Método seguro usando HttpParams
-    let paramList = new HttpParams();
-    paramList = paramList.append('Page', '1');
-    paramList = paramList.append('PageSize', '100');
-
-    return this.http.get<ApiProductoByFilterResponse>(this.UrlBase + 'productos', {
+    return this.http.get<ApiProductoByFilterResponse>(this.UrlBase + 'Productos/GetByNombre', {
       params: paramList,
     });
   }
@@ -48,14 +37,14 @@ export class ProductService {
   //El backend recibe un objeto Producto pero con IFomrFile como atributo para la imagen
   //Para enviar un objeto Producto con este tipo de atributo se envía un FormData dessde el FrontEnd
   addProduct(requestProduct: FormData) {
-    return this.http.post<ApiProductoResponse>(this.UrlBase + 'productos', requestProduct);
+    return this.http.post<ApiProductoResponse>(this.UrlBase + 'Productos', requestProduct);
   }
 
   updateProduct(id: string, requestProduct: FormData) {
-    return this.http.put<ApiProductoResponse>(this.UrlBase + 'productos/' + id, requestProduct);
+    return this.http.put<ApiProductoResponse>(this.UrlBase + 'Productos/' + id, requestProduct);
   }
 
   deleteProduct(id: string) {
-    return this.http.delete<BaseResponse>(this.UrlBase + 'productos/' + id);
+    return this.http.delete<BaseResponse>(this.UrlBase + 'Productos/' + id);
   }
 }
