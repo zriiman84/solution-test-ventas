@@ -1,0 +1,24 @@
+.list-category-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  & .mat-mdc-form-field {
+    width: 1000px;
+    font-size: 14px;
+  }
+
+  & .table-category {
+    width: 1000px;
+    overflow-y: auto;
+    overflow-x: auto;
+
+    & .mat-column-Acciones {
+      width: 200px;
+      text-align: center;
+    }
+  }
+
+}

@@ -1,0 +1,22 @@
+:root {
+  --mat-button-filled-container-color: var(--primary-color);
+  --mat-button-filled-label-text-color: var(--secondary-color);
+  --mat-button-filled-container-shape: 8px;
+  --mat-filled-button-horizontal-padding: 12px;
+  --mat-button-filled-container-height: 30px;
+  --mat-button-filled-disabled-label-text-color: #333;
+  --mat-button-filled-disabled-container-color: darkgray;
+  --mat-button-filled-container-color: var(--primary-color);
+  --mat-button-filled-label-text-color: var(--secondary-color);
+  --mat-button-filled-disabled-container-color: gray;
+}
+
+button.primary {
+	  --mat-button-text-label-text-color: var(--primary-color); /* aplica a los botones de clase primary */
+    --mat-button-text-state-layer-color: var(--primary-color);
+}
+
+button.accent {
+	  --mat-button-text-label-text-color: var(--accent-color); /* aplica a los botones de clase accent */
+    --mat-button-text-state-layer-color: var(--accent-color);
+}

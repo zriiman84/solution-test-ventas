@@ -1,0 +1,38 @@
+.container-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  & .header-container-product {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-color: var(--primary-color);
+    & .class-button {
+      color: var(--secondary-color);
+      font-weight: 500;
+      text-decoration: underline;
+    }
+
+    & ::ng-deep .active{
+      background-color:  var(--accent-color) !important;
+      color: white !important;
+    }
+
+    & ::ng-deep .class-button:hover{
+      background-color:  var(--secondary-color) !important;
+      color: white;
+    }
+  }
+  & .content-container-product {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 620px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+  }
+}

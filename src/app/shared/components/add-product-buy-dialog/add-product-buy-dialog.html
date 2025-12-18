@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="title-card">
+    <span class="title">{{ data.nombre }}</span> <br />
+    <span class="price"
+      >PRECIO: <span>S/ {{ data.precioUnitario.toFixed(2) }}</span></span
+    >
+  </div>
+  <form #addProductBuyForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Cantidad</mat-label>
+      <input
+        type="number"
+        matInput
+        ngModel
+        name="cantidadInput"
+        #cantidadInput="ngModel"
+        required
+        max="10"
+        min="1"
+        pattern="^[0-9]+$"
+      />
+      @if(cantidadInput.hasError('required')){
+      <mat-error>Campo requerido</mat-error>
+      } @if(cantidadInput.hasError('max')){
+      <mat-error>Solo 10 items como máximo</mat-error>
+      } @if(cantidadInput.hasError('min')){
+      <mat-error>La cantidad mínima aceptada es 1</mat-error>
+      } @if(cantidadInput.hasError('pattern')){
+      <mat-error>Solo se acepta número enteros</mat-error>
+      }
+    </mat-form-field>
+    <div class="total-container">
+      <span
+        >TOTAL:
+        <span class="total-value">
+          S/
+          {{
+            (data.precioUnitario * (cantidadInput.value ?? 0)).toFixed(2)
+          }}</span
+        ></span
+      >
+    </div>
+    <div class="actions">
+      <button
+        mat-flat-button
+        type="button"
+        [disabled]="addProductBuyForm.invalid"
+        (click)="addProductToShoppingCar(cantidadInput.value)"
+      >
+        AGREGAR AL CARRITO
+      </button>
+    </div>
+  </form>
+</div>

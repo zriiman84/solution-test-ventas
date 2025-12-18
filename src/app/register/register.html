@@ -1,0 +1,127 @@
+<div class="register-page-container">
+  <app-simple-header></app-simple-header>
+  <div class="principal-container">
+    <div class="title-container">
+      <div class="title">
+        <span>Regístrate, ingresa tus datos</span>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="card">
+        <div class="title-card">
+          <span>REGISTRO</span>
+        </div>
+        <form [formGroup]="registerUserForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombres</mat-label>
+            <input matInput type="text" formControlName="firstname" />
+            @if(registerUserForm.controls['firstname'].hasError("required")){
+            <mat-error>El campo es obligatorio </mat-error>
+            } @if(registerUserForm.controls['firstname'].hasError("maxlength")){
+            <mat-error>El campo debe tener máximo 100 caracteres </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Apellidos</mat-label>
+            <input matInput type="text" formControlName="lastname" />
+            @if(registerUserForm.controls['lastname'].hasError("required")){
+            <mat-error>El campo es obligatorio </mat-error>
+            } @if(registerUserForm.controls['lastname'].hasError("maxlength")){
+            <mat-error>El campo debe tener máximo 100 caracteres </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Edad</mat-label>
+            <input matInput type="number" step="1" formControlName="age" />
+            @if(registerUserForm.controls['age'].hasError("required")){
+            <mat-error>El campo es obligatorio </mat-error>
+            } @if(registerUserForm.controls['age'].hasError("min")){
+            <mat-error>Mínimo permitido 18 años </mat-error>
+            } @if(registerUserForm.controls['age'].hasError("max")){
+            <mat-error>Máximo permitido 80 años </mat-error>
+            } @if(registerUserForm.controls['age'].hasError("pattern")){
+            <mat-error>Sólo se admite enteros positivos </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input matInput type="text" formControlName="username"  autocomplete="username"/>
+            @if(registerUserForm.controls['username'].hasError("required")){
+            <mat-error>El campo es obligatorio </mat-error>
+            } @if(registerUserForm.controls['username'].hasError("minlength")){
+            <mat-error>El campo debe tener al menos 6 caracteres</mat-error>
+            } @if(registerUserForm.controls['username'].hasError("maxlength")){
+            <mat-error>El campo debe tener máximo 20 caracteres</mat-error>
+            } @if(registerUserForm.controls['username'].hasError("pattern")){
+            <mat-error>El campo solo admite letras, números, punto, guion y subguion</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" autocomplete="email" />
+            @if(registerUserForm.controls['email'].hasError("required")){
+            <mat-error>El campo es obligatorio </mat-error>
+            } @if(registerUserForm.controls['email'].hasError("email")){
+            <mat-error>Ingrese un email válido</mat-error>
+            } @if(registerUserForm.controls['email'].hasError("maxlength")){
+            <mat-error>El email admite máximo 100 caracteres</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" autocomplete="new-password" />
+            @if(registerUserForm.controls['password'].hasError("required")){
+            <mat-error>El campo es obligatorio </mat-error>
+            } @if(registerUserForm.controls['password'].hasError("minlength")){
+            <mat-error>El campo debe tener al menos 8 caracteres </mat-error>
+            } @if(registerUserForm.controls['password'].hasError("pattern")){
+            <mat-error>El campo debe tener al menos un dígito numérico y una letra mayúscula.</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo Documento</mat-label>
+            <mat-select formControlName="documenttype">
+              <mat-option value="1">DNI</mat-option>
+              <mat-option value="2">PASAPORTE</mat-option>
+              <mat-option value="3">CEL</mat-option>
+              <mat-option value="4">OTRO</mat-option>
+            </mat-select>
+            <mat-error>El password es obligatorio </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Nro. Documento</mat-label>
+            <input matInput type="text" formControlName="documentnumber" />
+            @if(registerUserForm.controls['documentnumber'].hasError("required")){
+            <mat-error>El campo es obligatorio </mat-error>
+            } @if(registerUserForm.controls['documentnumber'].hasError("maxlength")){
+            <mat-error>El campo debe tener máximo 20 caracteres</mat-error>
+            } @if(registerUserForm.controls['documentnumber'].hasError("pattern")){
+            <mat-error>El campo sólo admite letras y/o números</mat-error>
+            }
+          </mat-form-field>
+          <div class="botones">
+            <button
+              mat-flat-button
+              type="button"
+              class="primary"
+              (click)="registerUser()"
+              [disabled]="registerUserForm.invalid"
+            >
+              REGISTRAR
+            </button>
+            <button mat-flat-button type="button" class="reset" (click)="resetFormulario()">
+              LIMPIAR
+            </button>
+          </div>
+        </form>
+        <div class="login-card">
+          <span
+            >Si ya tienes una cuenta
+            <span class="link" routerLink="/login">ingresa</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

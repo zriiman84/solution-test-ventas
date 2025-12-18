@@ -1,0 +1,29 @@
+<div class="product-detail-page-container">
+  <app-logged-in-header></app-logged-in-header>
+  <div class="principal-container">
+    <div class="title-container">
+      <span><span class="accent-title"> ¡Enhorabuena! </span>Compra tus productos y disfruta</span>
+    </div>
+    <div class="content-container">
+      @if(producto){
+      <app-product-card appResaltarProductCard [dataProducto]="producto"></app-product-card>
+      <div class="panel-product">
+        <div class="description-product">
+          <span>Información del Producto</span> <br /><br />
+          <p>{{ producto.descripcionExtensa}}</p>
+        </div>
+        <div class="actions">
+          <span
+            >Precio:
+            <span class="price">S/ {{ producto.precioUnitario.toFixed(2) }}</span></span
+          >
+          <button mat-flat-button type="button" (click)="openBuyDialog()">
+            AGREGAR PRODUCTO
+          </button>
+        </div>
+      </div>
+    }
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

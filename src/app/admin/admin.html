@@ -1,0 +1,27 @@
+ <div class="page-container">
+  <app-logged-in-header></app-logged-in-header>
+  <div class="container">
+    <div class="navigation">
+      <div class="nav-item" routerLink="/admin/sales" routerLinkActive="active">
+        <img src="images/admin/ventas.png" alt="ventas" />
+        <span>VENTAS</span>
+      </div>
+      <div class="nav-item" routerLink="/admin/category" routerLinkActive="active">
+        <img src="images/admin/categorias.png" alt="categorías" />
+        <span>CATEGORÍAS</span>
+      </div>
+      <div class="nav-item" routerLink="/admin/products" routerLinkActive="active">
+        <img src="images/admin/productos.png" alt="productos" />
+        <span>PRODUCTOS</span>
+      </div>
+      <div class="nav-item" routerLink="/admin/reports" routerLinkActive="active">
+        <img src="images/admin/reportes.png" alt="reportes" />
+        <span>REPORTES</span>
+      </div>
+    </div>
+    <div class="current-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

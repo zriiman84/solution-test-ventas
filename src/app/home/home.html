@@ -1,0 +1,25 @@
+<app-home-header (searchProductValueChange)="obtenerProductos($event)"></app-home-header>
+<div class="home-container">
+  <div class="category-filter-container">
+    <mat-form-field>
+      <mat-label>Categoría Producto</mat-label>
+      <mat-select [formControl]="categoriaControl">
+        <mat-option [value]="0">Todos</mat-option>
+        @for(categoria of categorias; track categoria.id) {
+        <mat-option [value]="categoria.id">{{ categoria.nombre }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <span class="product-category">Selecciona tu categoría de producto</span>
+  </div>
+  <div class="product-list-container">
+    @for(producto of productosFiltrados; track $index) {
+    <app-product-card
+      [routerLink]="'/product-detail/' + producto.id"
+      appResaltarProductCard
+      [dataProducto]="producto"
+    ></app-product-card>
+    }
+  </div>
+</div>
+<app-footer></app-footer>
