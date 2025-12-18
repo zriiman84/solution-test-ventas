@@ -111,7 +111,6 @@ export class Sales implements OnInit, AfterViewInit {
       this.flagCargaVentas = true;
       this.processSaleData(resp.data);
     });
-
   }
 
   processSaleData(listaVentas :  Venta[] | null){

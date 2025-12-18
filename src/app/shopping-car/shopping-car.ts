@@ -7,7 +7,11 @@ import {
 } from '../shared/models/venta.model';
 import { VentaService } from '../shared/services/venta-service/venta-service';
 import { ProductService } from '../shared/services/product-service/product-service';
+<<<<<<< HEAD
 import { ApiProductoByFilterResponse, ApiProductoByIdResponse, Producto } from '../shared/models/producto.model';
+=======
+import { ApiProductoByIdResponse, Producto } from '../shared/models/producto.model';
+>>>>>>> 6137e91f6e5ff6a30da6811eddeeeff1252902a5
 import { MatTableModule } from '@angular/material/table';
 import { LoggedInHeader } from '../shared/components/logged-in-header/logged-in-header';
 import { Footer } from '../shared/components/footer/footer';
@@ -57,7 +61,6 @@ export class ShoppingCar implements OnInit {
   private matDialog = inject(MatDialog);
 
   ngOnInit() {
-    
     this.flagHabilitarCompra = false;
 
     //Validar usuario logueado
@@ -92,7 +95,7 @@ export class ShoppingCar implements OnInit {
 
     this.ventaService.GetListProductsByIds(listaDetalleVenta).subscribe((resp: ApiProductoByFilterResponse) => {
 
-          //1. Obtener los productos
+      //1. Obtener los productos
       if(resp.data){
           this.listaProductos = resp.data;
       

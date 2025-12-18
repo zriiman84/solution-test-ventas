@@ -18,8 +18,6 @@ export class VentaService {
   private UrlBase: string = 'https://localhost:5128/api/';
   private http = inject(HttpClient);
 
-
-
   buyProducts(ventaRequest: ApiVentaRequest) {
     return this.http.post<ApiVentaResponse>(this.UrlBase + 'Ventas', ventaRequest);
   }

@@ -29,8 +29,8 @@ export class Register {
   private userService: UserService = inject(UserService);
   private router = inject(Router);
 
-// Versión: Al menos 1 número y Al menos 1 Mayúscula (sin obligar minúsculas) y caracteres especiales.
-readonly regexPassword = /^(?=.*[0-9])(?=.*[A-Z])[a-zA-Z0-9.!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/;
+  // Versión: Al menos 1 número y Al menos 1 Mayúscula (sin obligar minúsculas) y caracteres especiales.
+  readonly regexPassword = /^(?=.*[0-9])(?=.*[A-Z])[a-zA-Z0-9.!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/;
   //REGEX para ingresar un nombre de usuario (Permite letras, números, punto, guion y subguion) - al menos una letra
   readonly regexUser = /^(?=.*[a-zA-Z])[a-zA-Z0-9._-]+$/;
   //REGEX para ingresar un entero positivo (edad)

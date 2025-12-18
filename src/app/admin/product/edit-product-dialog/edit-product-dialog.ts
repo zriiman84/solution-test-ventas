@@ -66,9 +66,8 @@ export class EditProductDialog implements OnInit {
       stock: new FormControl(this.data.stock, [
         Validators.required,
         Validators.min(1),
-        Validators.pattern(this.regexEnteroPositivo),
       ]),
-      productCategory: new FormControl(this.data.categoriaProductoId, [Validators.required]), //selector
+      productCategory: new FormControl(this.data.categoriaProductoId, [Validators.required]),
       imageFile: new FormControl(null), //sipre debe inicializar con null
     });
 

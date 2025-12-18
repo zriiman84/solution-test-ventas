@@ -36,7 +36,7 @@ export class Login {
   readonly regexDigito = /.*[0-9].*/;
   //REGEX para validar un email
   readonly regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //REGEX para ingresar un nombre de usuario (Permite letras, números, punto, guion y subguion) - al ,enos una letra
+  //REGEX para ingresar un nombre de usuario (Permite letras, números, punto, guion y subguion) - al menos una letra
   readonly regexUser = /^(?=.*[a-zA-Z])[a-zA-Z0-9._-]+$/;
 
   userService = inject(UserService);

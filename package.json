@@ -27,11 +27,18 @@
     "@angular/compiler": "^20.3.0",
     "@angular/core": "^20.3.0",
     "@angular/forms": "^20.3.0",
+<<<<<<< HEAD
     "@angular/material": "^20.2.14",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
     "@types/canvas-confetti": "^1.9.0",
     "angular2-notifications": "^16.0.1",
+=======
+    "@angular/material": "^20.2.13",
+    "@angular/platform-browser": "^20.3.0",
+    "@angular/router": "^20.3.0",
+    "@types/canvas-confetti": "^1.9.0",
+>>>>>>> 6137e91f6e5ff6a30da6811eddeeeff1252902a5
     "canvas-confetti": "^1.9.4",
     "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
