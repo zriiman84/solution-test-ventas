@@ -33,32 +33,38 @@ export const handleHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
 
-      console.log('[Http Error]: ' + error.status + ' -  [Mensaje Error]: ' + (error.error.errorMessage ?? error.message));
+      let serverMessage = error.error?.message || null;
+
+      if(serverMessage){
+        serverMessage = error.error?.errorMessage ?? error?.message;
+      }
+
+      console.log('[Http Error]: ' + error.status + ' -  [Mensaje Error]: ' + (serverMessage ?? ''));
 
       //Switch para manejar códigos de error
       switch(error.status){
         case 400:
-          alert('Error [400]: Solicitud incorrecta. Verifica los datos enviados.');
+          alert('Error [400]: Solicitud incorrecta. Verifica los datos enviados. ' + (serverMessage ?? ''));
           break;
 
         case 401:
-          alert('Error [401]: No está autenticado. Debe iniciar sesión');
+          alert('Error [401]: No está autenticado. Debe iniciar sesión. ' + (serverMessage ?? ''));
           break;
 
         case 403:
-          alert('Error [403]: No tiene suficientes permisos para realizar esta acción.');
+          alert('Error [403]: No tiene suficientes permisos para realizar esta acción. ' + (serverMessage ?? ''));
           break;
 
         case 404:
-          alert('Error [404]: El recurso solicitado no existe.');
+          alert('Error [404]: El recurso solicitado no existe. ' + (serverMessage ?? ''));
           break;
 
         case 500:
-          alert('Error [500]: Error interno del servidor, comuníquese con el administrador del sistema. [Mensaje Error]: ' +  (error.error.errorMessage ?? error.message));
+          alert('Error [500]: Error interno del servidor, comuníquese con el administrador del sistema. [Mensaje Error]: ' +  (serverMessage ?? ''));
           break;
 
           default:
-          alert('Error [' + error.status + ']: Ocurrió un error inesperado, comuníquese con el administrador del sistema. [Mensaje Error]: ' +  (error.error.errorMessage ?? error.message));
+          alert('Error [' + error.status + ']: Ocurrió un error inesperado, comuníquese con el administrador del sistema. [Mensaje Error]: ' +  (serverMessage ?? ''));
           break;
       }
 

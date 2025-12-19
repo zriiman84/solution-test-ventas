@@ -1,4 +1,9 @@
-.home-container{
+.page-principal{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  & .home-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,4 +33,5 @@
     	}
   }
 
+  }
 }
