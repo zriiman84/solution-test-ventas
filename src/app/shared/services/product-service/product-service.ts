@@ -7,12 +7,13 @@ import {
   Producto,
 } from '../../models/producto.model';
 import { BaseResponse } from '../../models/generic.model';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private UrlBase: string = 'https://localhost:5128/api/';
+  private UrlBase: string = environment.baseUrl;
   private http = inject(HttpClient);
 
   getProductById(id: number) {

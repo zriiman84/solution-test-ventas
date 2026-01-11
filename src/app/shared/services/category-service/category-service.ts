@@ -7,12 +7,13 @@ import {
   ApiCategoriaResponse,
 } from '../../models/categoria.model';
 import { BaseResponse } from '../../models/generic.model';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  private UrlBase: string = 'https://localhost:5128/api/';
+  private UrlBase: string = environment.baseUrl;
   private http = inject(HttpClient);
 
   getCategoryById(id: string) {

@@ -10,12 +10,13 @@ import {
   DetalleVentaRequest,
 } from '../../models/venta.model';
 import { ApiProductoByFilterResponse } from '../../models/producto.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VentaService {
-  private UrlBase: string = 'https://localhost:5128/api/';
+  private UrlBase: string = environment.baseUrl;
   private http = inject(HttpClient);
 
   buyProducts(ventaRequest: ApiVentaRequest) {

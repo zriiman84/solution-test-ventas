@@ -5,12 +5,13 @@ import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { BaseResponse } from '../../models/generic.model';
 import { VentaService } from '../venta-service/venta-service';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private UrlBase: string = 'https://localhost:5128/api/';
+  private UrlBase: string = environment.baseUrl;
   private http = inject(HttpClient);
 
   //Definiendo variables
